@@ -1,8 +1,10 @@
 # Table of contents
 
+* [Welcome](README.md)
+
 ## Developer
 
-* [Java](README.md)
+* [Java](<README (1).md>)
   * [JUnit](developer/java/junit/README.md)
     * [Parameterized Test](developer/java/junit/parameterized-test.md)
   * [Maven](developer/java/maven/README.md)

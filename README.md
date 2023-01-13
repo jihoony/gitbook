@@ -1,4 +1,3 @@
 # Welcome
 
-> Welcome Developer's Note
-
+Welcome Developer's Note
