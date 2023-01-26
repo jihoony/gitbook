@@ -2,7 +2,7 @@
 
 ## **Intro**
 
-Most vulnerabilities in C are related to [buffer overflows](http://en.wikipedia.org/wiki/Buffer\_overflow) ![external link](https://security.web.cern.ch/images/external\_link.png) and string manipulation. In most cases, this would result in a segmentation fault, but specially crafted malicious input values, adapted to the architecture and environment could yield to arbitrary code execution. You will find below a list of the most common errors and suggested fixes/solutions. (_Some tips for C++ are available_ [_here_](https://security.web.cern.ch/recommendations/en/codetools/cpp.shtml)_._)
+Most vulnerabilities in C are related to [buffer overflows](http://en.wikipedia.org/wiki/Buffer\_overflow) and string manipulation. In most cases, this would result in a segmentation fault, but specially crafted malicious input values, adapted to the architecture and environment could yield to arbitrary code execution. You will find below a list of the most common errors and suggested fixes/solutions. (_Some tips for C++ are available_ [_here_](https://security.web.cern.ch/recommendations/en/codetools/cpp.shtml)_._)
 
 ## **gets**
 
@@ -176,7 +176,7 @@ int main() {
 
 ## **printf and friends**
 
-One other vulnerability category is concerned with [string formatting attacks](http://en.wikipedia.org/wiki/Format\_string\_attack) ![external link](https://security.web.cern.ch/images/external\_link.png), those can cause information leakage, overwriting of memory, … This error can be exploited in any of the following functions: printf, fprintf, sprintf and snprintf, _i.e._ all functions that take a “format string” as argument.
+One other vulnerability category is concerned with [string formatting attacks](http://en.wikipedia.org/wiki/Format\_string\_attack), those can cause information leakage, overwriting of memory, … This error can be exploited in any of the following functions: printf, fprintf, sprintf and snprintf, _i.e._ all functions that take a “format string” as argument.
 
 **Vulnerable code**
 
@@ -186,8 +186,8 @@ One other vulnerability category is concerned with [string formatting attacks](h
  
 int main(int argc, char **argv) {
     char *secret = "This is a secret!\n";
- 
-     (argv[1]);
+    
+    printf(argv[1]);
  
     return 0;
 }
@@ -212,7 +212,7 @@ It's really simple: **always** hardcode the format string. At least, **never** l
 
 ## **File opening**
 
-Much care must be taken when opening files, as many issues can arise. This is covered in much detail by Kupsch and Miller in [this tutorial](http://www.cs.wisc.edu/mist/presentations/kupsch\_miller\_secse08.pdf) ![external link](https://security.web.cern.ch/images/external\_link.png). They also provide libraries implementing their approach. Out of the many ways file handling can be attacked, we will only present two brief examples below.
+Much care must be taken when opening files, as many issues can arise. This is covered in much detail by Kupsch and Miller in [this tutorial](http://www.cs.wisc.edu/mist/presentations/kupsch\_miller\_secse08.pdf). They also provide libraries implementing their approach. Out of the many ways file handling can be attacked, we will only present two brief examples below.
 
 Some of the basic pitfalls are described below.
 
@@ -226,8 +226,7 @@ It is a good idea to check whether a file exists or not before creating it. Howe
 #include <unistd.h>
  
 #define MY_TMP_FILE "/tmp/file.tmp"
- 
- 
+
 int main(int argc, char* argv[])
 {
     FILE * f;
