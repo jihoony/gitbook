@@ -30,6 +30,7 @@
   * [Intruduction to GNU Autotools](developer/c-c++/intruduction-to-gnu-autotools.md)
   * [mysql](developer/c-c++/mysql/README.md)
     * [Api Flow](developer/c-c++/mysql/api-flow.md)
+  * [Common vulnerabilities guide for C programmers](developer/c-c++/common-vulnerabilities-guide-for-c-programmers.md)
 * [CryptoGraphy](developer/cryptography/README.md)
   * [인증 기관(CA;Certificate Authority) 구성하고 인증서 발급하기](developer/cryptography/ca-certificate-authority.md)
   * [KeyTool Import PrivateKey, Certificate](developer/cryptography/keytool-import-privatekey-certificate.md)
