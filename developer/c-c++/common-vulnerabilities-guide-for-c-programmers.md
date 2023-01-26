@@ -4,6 +4,8 @@
 
 Most vulnerabilities in C are related to [buffer overflows](http://en.wikipedia.org/wiki/Buffer\_overflow) and string manipulation. In most cases, this would result in a segmentation fault, but specially crafted malicious input values, adapted to the architecture and environment could yield to arbitrary code execution. You will find below a list of the most common errors and suggested fixes/solutions. (_Some tips for C++ are available_ [_here_](https://security.web.cern.ch/recommendations/en/codetools/cpp.shtml)_._)
 
+
+
 ## **gets**
 
 The stdio gets() function does not check for buffer length and always results in a vulnerability.
@@ -63,6 +65,8 @@ int main () {c
 }
 
 ```
+
+****
 
 ## **strcpy**
 
@@ -126,6 +130,8 @@ if (str1[BUFFER_SIZE-1] != '\0') {
 
 For the other functions in the family, the \*n\* variants exist as well: strncpm and strncat
 
+
+
 ## **sprintf**
 
 Just as the previous functions, sprintf does not check the buffer boundaries and is vulnerable to overflows.
@@ -174,6 +180,8 @@ int main() {
 
 ```
 
+****
+
 ## **printf and friends**
 
 One other vulnerability category is concerned with [string formatting attacks](http://en.wikipedia.org/wiki/Format\_string\_attack), those can cause information leakage, overwriting of memory, … This error can be exploited in any of the following functions: printf, fprintf, sprintf and snprintf, _i.e._ all functions that take a “format string” as argument.
@@ -209,6 +217,8 @@ $
 **Mitigation**
 
 It's really simple: **always** hardcode the format string. At least, **never** let it come directly from any user's input.
+
+
 
 ## **File opening**
 
