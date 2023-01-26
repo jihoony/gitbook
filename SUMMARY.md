@@ -47,6 +47,7 @@
   * [Environment Variables for MariaDB or MySQL Docker](devops/docker/environment-variables-for-mariadb-or-mysql-docker.md)
   * [Container Technology, Docker](devops/docker/container-technology-docker.md)
   * [Docker Trouble Shooting](devops/docker/docker-trouble-shooting.md)
+  * [Docker BuildKit](devops/docker/docker-buildkit.md)
 * [Cloud](devops/cloud/README.md)
   * [Serverless Architecture](devops/cloud/serverless-architecture.md)
   * [AWS](devops/cloud/aws/README.md)
