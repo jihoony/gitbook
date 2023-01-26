@@ -24,6 +24,7 @@
   * [Logging with Lombok](developer/readme/logging-with-lombok.md)
 * [MySQL](developer/mysql/README.md)
   * [Active Connections on MySQL](developer/mysql/active-connections-on-mysql.md)
+  * [MariaDB-Galera](developer/mysql/mariadb-galera.md)
 * [C/C++](developer/c-c++/README.md)
   * [Autotool 사용법](developer/c-c++/autotool.md)
   * [Intruduction to GNU Autotools](developer/c-c++/intruduction-to-gnu-autotools.md)
