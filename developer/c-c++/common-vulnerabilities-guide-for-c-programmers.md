@@ -10,7 +10,7 @@ The stdio gets() function does not check for buffer length and always results in
 
 **Vulnerable code**
 
-```
+```c
 #include <stdio.h>
 int main () {
     char username[8];
@@ -32,11 +32,11 @@ int main () {
 
 Prefer using fgets (and dynamically allocated memory!):&#x20;
 
-```
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #define LENGTH 8
-int main () {
+int main () {c
     char* username, *nlptr;
     int allow = 0;
  
@@ -70,7 +70,7 @@ The strcpy built-in function does not check buffer lengths and may very well ove
 
 **Vulnerable code**
 
-```
+```c
 char str1[10];
 char str2[]="abcdefghijklmn";
 strcpy(str1,str2);
@@ -80,9 +80,9 @@ strcpy(str1,str2);
 
 The best way to mitigate this issue is to use strlcpy if it is readily available (which is only the case on BSD systems). However, it is very simple to define it yourself, as shown below:
 
-```
+```c
 #include <stdio.h>
- 
+
 #ifndef strlcpy
 #define strlcpy(dst,src,sz) snprintf((dst), (sz), "%s", (src))
 #endif
@@ -108,7 +108,7 @@ int main() {
 
 Another and may be slightly less convenient way is to use strncpy, which prevents buffer overflows, but does not guarantee '\0'-termination.
 
-```
+```c
 enum { BUFFER_SIZE = 10 };
 char str1[BUFFER_SIZE];
 char str2[]="abcdefghijklmn";
@@ -132,7 +132,7 @@ Just as the previous functions, sprintf does not check the buffer boundaries and
 
 **Vulnerable code**
 
-```
+```c
 #include <stdio.h>
 #include <stdlib.h>
  
@@ -154,7 +154,7 @@ int main() {
 
 Prefer using snprintf, which has the double advantage of preventing buffers overflows and returning the minimal size of buffer needed to fit the whole formatted string.
 
-```
+```c
 #include <stdio.h>
 #include <stdlib.h>
  
@@ -180,7 +180,7 @@ One other vulnerability category is concerned with [string formatting attacks](h
 
 **Vulnerable code**
 
-```
+```c
 #FormatString.c
 #include <stdio.h>
  
@@ -197,7 +197,7 @@ Now, this code, if compiled with the -mpreferred-stack-boundary=2 option (_on a 
 
 If called with ./FormatString %s, it will print the secret string.
 
-```
+```bash
 $ gcc -mpreferred-stack-boundary=2 FormatString.c -o FormatString
 $ ./FormatString %s
 This is a secret!
@@ -220,7 +220,7 @@ Some of the basic pitfalls are described below.
 
 It is a good idea to check whether a file exists or not before creating it. However, a malicious user might create a file (or worse, a symbolic link to a critical system file) between your check and the moment you actually use the file.
 
-```
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -256,7 +256,7 @@ int main(int argc, char* argv[])
 
 Avoid the race condition by accessing directly the file, and don't overwrite it if it already exists. So,
 
-```
+```c
 #include <unistd.h>
 #include <stdio.h>
 #include <fcntl.h>
