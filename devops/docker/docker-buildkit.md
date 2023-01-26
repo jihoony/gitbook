@@ -1,6 +1,6 @@
 # Docker BuildKit
 
-### Getting started
+## Getting started
 
 BuildKit is enabled by default for all users on Docker Desktop. If you have installed Docker Desktop, you don't have to manually enable BuildKit. if you are running Docker on Linux, you can enable BuildKit either by using an environment variable or by making BuildKit the default setting.
 
