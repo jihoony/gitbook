@@ -11,6 +11,6 @@
 
 ## Reference
 
-https://mariadb.com/kb/en/mariadb-docker-environment-variables/
+{% embed url="https://mariadb.com/kb/en/mariadb-docker-environment-variables/" %}
 
-https://hub.docker.com/\_/mariadb
+{% embed url="https://hub.docker.com/_/mariadb" %}
