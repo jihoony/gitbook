@@ -2,9 +2,9 @@
 
 ## Prerequisite
 
-1. virtualbox([https://www.virtualbox.org](https://www.virtualbox.org)) 설치
-2. virtualbox extension([https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)) 설치
-3. vargrant([https://www.vagrantup.com](https://www.vagrantup.com)) 설치
+1. virtualbox(https://www.virtualbox.org) 설치
+2. virtualbox extension(https://www.virtualbox.org/wiki/Downloads) 설치
+3. vargrant(https://www.vagrantup.com) 설치
 4. vagrant plugin 설치
 
 ```bash
@@ -79,4 +79,4 @@ vagrant destroy
 
 ## Reference
 
-{% embed url="https://www.vagrantup.com/docs" %}
+Vagrant Document: https://www.vagrantup.com/docs

@@ -80,7 +80,7 @@ java 파일로 작성된 Class는 인스턴스로 생성되는 과정에 속성 
 
 ![Containers sharing same image](https://docs.docker.com/storage/storagedriver/images/sharing-layers.jpg)
 
-Docker Image and layers: [https://docs.docker.com/storage/storagedriver/](https://docs.docker.com/storage/storagedriver/)
+Docker Image and layers: https://docs.docker.com/storage/storagedriver/
 
 **Image 경로**
 

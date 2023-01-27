@@ -9,6 +9,14 @@
 | user          | MARIADB\_USER           | MYSQL\_USER           |
 | password      | MARIADB\_PASSWORD       | MYSQL\_PASSWORD       |
 
+### Example
+
+{% code overflow="wrap" %}
+```bash
+$ docker run -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=my-database -e MYSQL_USER=my-user -e MYSQL_PASSWORD=my-password mysql:latest
+```
+{% endcode %}
+
 ## Reference
 
 {% embed url="https://mariadb.com/kb/en/mariadb-docker-environment-variables/" %}
