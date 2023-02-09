@@ -44,7 +44,17 @@ sudo apt-get update && sudo apt-get install logstash
 ```
 {% endcode %}
 
-### Reference
+
+
+## Running Logstash
+
+```bash
+sudo systemctl start logstash
+```
+
+
+
+## Reference
 
 {% embed url="https://www.elastic.co/guide/en/logstash/current/installing-logstash.html#_apt" %}
 

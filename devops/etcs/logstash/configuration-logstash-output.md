@@ -59,7 +59,7 @@ nc 명령어로 json 파일을 logstash로 전한다.
 
 {% code overflow="wrap" %}
 ```bash
-$ echo "{\"Hello\":\"Logstash\"}" | nc 127.0.0.1 3000
+echo "{\"Hello\":\"Logstash\"}" | nc 127.0.0.1 3000
 ```
 {% endcode %}
 
@@ -68,7 +68,7 @@ $ echo "{\"Hello\":\"Logstash\"}" | nc 127.0.0.1 3000
 tail 명령어로 logstash 에서 저장한 파일을 확인한다.
 
 ```bash
-$ tail -F /tmp/test_pipeling_logstash.log
+tail -F /tmp/test_pipeling_logstash.log
 ```
 
 {% code overflow="wrap" %}
