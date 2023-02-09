@@ -1,4 +1,4 @@
-# List of Lists int a List (Stream)
+# List of Lists into a List (Stream)
 
 ## Required
 

@@ -4,6 +4,8 @@
 
 ### Flow
 
+
+
 ```mermaid
 stateDiagram
 [*] --> mysql_init
@@ -230,7 +232,7 @@ if (mysql_stmt_close(stmt))
 ### Flow
 
 ```mermaid
-stateDiagram-v2
+stateDiagram
 [*] --> mysql_init
 mysql_init --> mysql_real_connect
 mysql_real_connect --> mysql_stmt_init
