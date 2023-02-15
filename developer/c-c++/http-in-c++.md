@@ -120,6 +120,4 @@ $ ./http_post
 
 
 
-{% embed url="https://github.com/open-source-parsers/jsoncpp" %}
-
 {% embed url="https://qiita.com/ekzemplaro/items/97bc000576a6210a3068" %}
