@@ -20,6 +20,7 @@ configure --> ./configure
 Makefile.in --> ./configure
 
 ./configure --run script--> Makefile[[Makefile]]
+
 ```
 
 ```mermaid
@@ -40,6 +41,7 @@ configure --> ./configure
 Makefile.in --> ./configure
 
 ./configure --run script--> Makefile[[Makefile]]
+
 ```
 
 ## autoscan
