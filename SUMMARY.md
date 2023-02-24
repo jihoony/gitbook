@@ -25,6 +25,7 @@
     * [List of Lists into a List (Stream)](developer/readme/etcs/list-of-lists-into-a-list-stream.md)
     * [Return null in stream](developer/readme/etcs/return-null-in-stream.md)
   * [Logging with Lombok](developer/readme/logging-with-lombok.md)
+  * [JPA](developer/readme/jpa.md)
 * [MySQL](developer/mysql/README.md)
   * [Active Connections on MySQL](developer/mysql/active-connections-on-mysql.md)
   * [MariaDB-Galera](developer/mysql/mariadb-galera.md)
