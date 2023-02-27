@@ -2,14 +2,16 @@
 
 ## Markdown
 
-typora
+### typora
 
-https://typora.io/
+{% embed url="https://typora.io/" %}
 
-mermaid-js
+### mermaid-js
 
-https://mermaid-js.github.io/mermaid/#/
+{% embed url="https://mermaid-js.github.io/mermaid/#/" %}
 
-CodeMirror
 
-https://codemirror.net/
+
+### CodeMirror
+
+{% embed url="https://codemirror.net/" %}
