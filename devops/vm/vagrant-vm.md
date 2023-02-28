@@ -11,6 +11,10 @@
 vagrant plugin install vagrant-vbguest
 ```
 
+```bash
+vagrant plugin install vagrant-vboxmanage
+```
+
 ## How to use vagrant
 
 1. 폴더 생성
