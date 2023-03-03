@@ -8,7 +8,7 @@ description: using VirtualBox, vagrant
 
 * [VirtualBox](https://www.virtualbox.org)
 * [Vagrant](https://www.vagrantup.com)
-* At least 4GB of gree RAM
+* At least 4GB of free RAM
 
 ### Note
 
