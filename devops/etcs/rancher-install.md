@@ -222,7 +222,9 @@ Rancher main page
 
 ## Create New Cluster
 
-Click Create new Cluster and select `Custom`.
+### Create new Cluster
+
+click create new cluster and select `Custom`.
 
 > Custom: use existing nodes and create a cluster using RKE
 
@@ -238,7 +240,7 @@ set `Cluster Name` and scroll down.
 
 <figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
-
+### Add Nodes to Cluster
 
 Add Cluster - Custom
 
@@ -298,6 +300,8 @@ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kube
 {% endcode %}
 
 
+
+### Provisioning Cluster
 
 provisioning cluster
 
