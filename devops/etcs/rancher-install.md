@@ -69,7 +69,9 @@ systemctl daemon-reload && systemctl restart docker
 
 
 
-below `Vagrantfile` is generate 4 VMs(1 VM is for rancher, 3 VM is for k8s).
+below `Vagrantfile` is generate 5 VMs(1 VM is for rancher, 4 VM is for k8s).
+
+> Prepare at least 4GB of memory for Rancher.
 
 VM network's range is `192.168.56.0/24`.
 
@@ -83,7 +85,20 @@ ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", path: "bootstrap.sh"
+  
+  config.vm.define "Rancher" do |rancher|
+    rancher.vm.box = "ubuntu/focal64"
+    rancher.vm.hostname = "rancher.example.com"
+    rancher.vm.network "private_network", ip: "192.168.56.10"
+    rancher.vm.provision "shell", inline: "docker run --privileged -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher"
 
+    rancher.vm.provider "virtualbox" do |rv|
+        rv.name = "rancher"
+        rv.memory = 4096
+        rv.cpus = 2
+    end
+  end
+  
   NodeCount = 4
 
   # Kubernetes Nodes
@@ -112,7 +127,8 @@ VM Information
 
 | hostname | cpus | memory(GiB) | IP             | Purpose    |
 | -------- | ---- | ----------- | -------------- | ---------- |
-| node1    | 2    | 2           | 192.168.56.111 | Rancher    |
+| rancher  | 2    | 6           | 192.168.56.10  | Rancher    |
+| node1    | 2    | 2           | 192.168.56.111 | k8s Master |
 | node2    | 2    | 2           | 192.168.56.112 | k8s Master |
 | node3    | 2    | 2           | 192.168.56.113 | k8s Worker |
 | node4    | 2    | 2           | 192.168.56.114 | k8s Worker |
@@ -121,7 +137,7 @@ VM Information
 
 Empty VM List
 
-<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption><p>Empty VM List</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption><p>Empty VM List</p></figcaption></figure>
 
 
 
@@ -137,7 +153,9 @@ vagrant up
 
 Generated VM List
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption><p>Generated VM List</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption><p>Generated VM List</p></figcaption></figure>
+
+
 
 ## Repository in Host
 
@@ -159,84 +177,32 @@ curl 192.168.129.106:5001/v2/_catalog
 
 ## Run Rancher
 
-### Install rancher
-
-connect `node1` with root password `kubeadmin`, see `bootstrap.sh`&#x20;
-
-{% code overflow="wrap" %}
-```bash
-ssh root@192.168.56.111
-docker run --privileged -d --restart=unless-stopped -v /opt/rancher:/var/lib/rancher -p 80:80 -p 443:443 rancher/rancher
-```
-{% endcode %}
-
-{% code overflow="wrap" %}
-```bash
-root@node1:~# docker run --privileged -d --restart=unless-stopped -v /opt/rancher:/var/lib/rancher -p 80:80 -p 443:443 rancher/rancher
-Unable to find image 'rancher/rancher:latest' locally
-latest: Pulling from rancher/rancher
-fb44d0195361: Pull complete
-28e8c69365bc: Pull complete
-69133ddd606f: Pull complete
-552cf618daee: Downloading [=============>                                     ]  46.77MB/170.8MB
-f4ccca29e2ec: Download complete
-46c3a18b4dc4: Download complete
-45702284aa96: Download complete
-8df327249a50: Downloading [===============================================>   ]  26.37MB/27.78MB
-54c378396e21: Download complete
-d6ba306d9dd5: Downloading [======>                                            ]  9.128MB/70.07MB
-b44793c1e7d3: Waiting
-ffde21a6ab12: Waiting
-aaeeb000d225: Waiting
-aa421db55e87: Waiting
-907c7a663008: Waiting
-8745a92f349a: Waiting
-a4cc830ed766: Waiting
-ce5f83f3158f: Waiting
-b11162943c37: Waiting
-194836056959: Waiting
-....
-Digest: sha256:188ac186125ca1d4bef1e741568ec381eed1af4e9a876c7b15eabcc98325f2b0
-Status: Downloaded newer image for rancher/rancher:latest
-c5b095765135fd3154ab1474990b8e441aae192e12443b0fe9638e16d3cc97a4
-root@node1:~#
-```
-{% endcode %}
-
-
-
 ### Rancher web
 
-#### connect to rancher web (`http:192.168.56.111`) via web browser
+#### connect to rancher web (`http:192.168.56.10`) via web browser
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>connect to rancher web</p></figcaption></figure>
-
-
+<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
 #### check container id and find password
 
 {% code overflow="wrap" %}
 ```bash
-root@node1:~# docker ps
-CONTAINER ID   IMAGE             COMMAND           CREATED         STATUS         PORTS                                                                      NAMES
-c5b095765135   rancher/rancher   "entrypoint.sh"   7 minutes ago   Up 7 minutes   0.0.0.0:80->80/tcp, :::80->80/tcp, 0.0.0.0:443->443/tcp, :::443->443/tcp   hardcore_banach
-root@node1:~#
-root@node1:~#
-root@node1:~# docker logs c5b | grep "Bootstrap Password"
-I0228 06:21:49.416557      33 leaderelection.go:248] attempting to acquire leader lease kube-system/cattle-controllers...
-I0228 06:21:49.434567      33 leaderelection.go:258] successfully acquired lease kube-system/cattle-controllers
-E0228 06:21:50.445510      33 gvks.go:69] failed to sync schemas: unable to retrieve the complete list of server APIs: monitoring.coreos.com/v1: the server could not find the requested resource
-2023/02/28 06:21:49 [INFO] Bootstrap Password: 7sw2c25v9wznztm57m5n9sdlbpqqmzw6bfrbx6lmk7hqqtgtv25wdp
-E0228 06:21:51.029681      33 gvks.go:69] failed to sync schemas: unable to retrieve the complete list of server APIs: monitoring.coreos.com/v1: the server could not find the requested resource
-E0228 06:21:56.122655      33 gvks.go:69] failed to sync schemas: failed to sync cache for cluster.x-k8s.io/v1alpha3, Kind=MachineHealthCheck
-E0228 06:22:04.272865      33 memcache.go:206] couldn't get resource list for rke-machine-config.cattle.io/v1: the server could not find the requested resource
-E0228 06:22:04.354617      33 memcache.go:206] couldn't get resource list for rke-machine.cattle.io/v1: the server could not find the requested resource
-E0228 06:22:05.942253      33 gvks.go:69] failed to sync schemas: failed to sync cache for rke-machine.cattle.io/v1, Kind=AzureMachineTemplate
-E0228 06:22:07.407031      33 gvks.go:69] failed to sync schemas: failed to sync cache for rke-machine.cattle.io/v1, Kind=VmwarevsphereMachine
-E0228 06:22:08.286225      33 gvks.go:69] failed to sync schemas: failed to sync cache for rke-machine.cattle.io/v1, Kind=LinodeMachine
-E0228 06:22:09.207585      33 request.go:977] Unexpected error when reading response body: context canceled
-E0228 06:22:09.210331      33 gvks.go:69] failed to sync schemas: failed to sync cache for rke-machine.cattle.io/v1, Kind=LinodeMachineTemplate
-root@node1:~#
+root@rancher:~# docker ps
+docker CONTAINER ID   IMAGE             COMMAND           CREATED          STATUS          PORTS                                                                      NAMES
+c5deb26bb7a1   rancher/rancher   "entrypoint.sh"   16 minutes ago   Up 16 minutes   0.0.0.0:80->80/tcp, :::80->80/tcp, 0.0.0.0:443->443/tcp, :::443->443/tcp   thirsty_shtern
+root@rancher:~# 
+root@rancher:~# 
+root@rancher:~# 
+root@rancher:~# docker logs c5de | grep Password
+I0303 03:22:09.031183      32 leaderelection.go:248] attempting to acquire leader lease kube-system/cattle-controllers...
+I0303 03:22:09.048776      32 leaderelection.go:258] successfully acquired lease kube-system/cattle-controllers
+2023/03/03 03:22:09 [INFO] Bootstrap Password: sjq4vhgr79vdr9x6lksrhmctlrdg6wtk27z4vvkmgxhdl9rmb9pt2p
+E0303 03:22:12.688027      32 gvks.go:69] failed to sync schemas: failed to sync cache for cluster.x-k8s.io/v1alpha3, Kind=Cluster
+E0303 03:22:21.864510      32 request.go:977] Unexpected error when reading response body: context canceled
+E0303 03:22:21.864732      32 gvks.go:69] failed to sync schemas: failed to sync cache for rke-machine.cattle.io/v1, Kind=LinodeMachineTemplate
+E0303 03:22:22.405636      32 gvks.go:69] failed to sync schemas: failed to sync cache for rke-machine.cattle.io/v1, Kind=AzureMachineTemplate
+E0303 03:22:23.015232      32 gvks.go:69] failed to sync schemas: failed to sync cache for rke-machine.cattle.io/v1, Kind=DigitaloceanMachine
+root@rancher:~#
 ```
 {% endcode %}
 
@@ -244,11 +210,13 @@ root@node1:~#
 
 #### Set new password and continue
 
-<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption><p>Set new password</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption><p>Set new password</p></figcaption></figure>
+
+
 
 Rancher main page
 
-<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption><p>Rancher main page</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>welcome to rancher</p></figcaption></figure>
 
 
 
@@ -258,15 +226,17 @@ Click Create new Cluster and select `Custom`.
 
 > Custom: use existing nodes and create a cluster using RKE
 
-<figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption><p>Create Cluster</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption><p>create cluster</p></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption><p>set cluster name</p></figcaption></figure>
+
+
 
 set `Cluster Name` and scroll down.
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
-
 `Cloud provider` is `External (Out-of-tree)` and `Next`.
 
-<figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -274,16 +244,28 @@ Add Cluster - Custom
 
 > Click `Show advanced options`
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 
 Show advanced options
 
-<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+
 
 node role
 
-* node2(192.168.56.112) is master(etcd, control plane).
+* node1(192.168.56.111), node2(192.168.56.112) is master(etcd, control plane).
 * node3(192.168.56.113), node4(192.168.56.114) is worker(worker)
+
+
+
+in node1 (select only `etcd`, `control plane` and copy command)
+
+{% code overflow="wrap" %}
+```bash
+sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7.1 --server https://192.168.56.10 --token v6wqbtdr8btnfdtvdnwcjqb6mf659nvmntnssjvg2g25fbcfxbg6s8 --ca-checksum 9120c03ac56d2be15ef71e68ce585ef06737c1457f55c8430fe5287bd3f3636a --address 192.168.56.111 --etcd --controlplane
+```
+{% endcode %}
 
 
 
@@ -291,39 +273,51 @@ in node2 (select only `etcd`, `control plane` and copy command)
 
 {% code overflow="wrap" %}
 ```bash
-sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7.1 --server https://192.168.56.111 --token mnb5t8g85nch64d4m95f2wdvlpcrv5lx82pcgxjd4jzm7dhmll9hng --ca-checksum 94bf5ab5d96599a7ec029e430bd2eb588bc9dd960ac676dd3b4532cba9216d6a --address 192.168.56.112 --internal-address 192.168.56.112 --etcd --controlplane
+sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7.1 --server https://192.168.56.10 --token v6wqbtdr8btnfdtvdnwcjqb6mf659nvmntnssjvg2g25fbcfxbg6s8 --ca-checksum 9120c03ac56d2be15ef71e68ce585ef06737c1457f55c8430fe5287bd3f3636a --address 192.168.56.112 --etcd --controlplane
 ```
 {% endcode %}
 
 
 
-in node3 (deselect `etcd`, `control plane` and select only `worker` and copy command)
+in node3 (de-select `etcd`, `control plane` and select only `worker` and copy command)
 
 {% code overflow="wrap" %}
 ```bash
-sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7.1 --server https://192.168.56.111 --token mnb5t8g85nch64d4m95f2wdvlpcrv5lx82pcgxjd4jzm7dhmll9hng --ca-checksum 94bf5ab5d96599a7ec029e430bd2eb588bc9dd960ac676dd3b4532cba9216d6a --address 192.168.56.113 --internal-address 192.168.56.113 --worker
+sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7.1 --server https://192.168.56.10 --token v6wqbtdr8btnfdtvdnwcjqb6mf659nvmntnssjvg2g25fbcfxbg6s8 --ca-checksum 9120c03ac56d2be15ef71e68ce585ef06737c1457f55c8430fe5287bd3f3636a --address 192.168.56.113 --worker
 ```
 {% endcode %}
 
 
 
-in node4 (deselect `etcd`, `control plane` and select only `worker` and copy command)
+in node4 (de-select `etcd`, `control plane` and select only `worker` and copy command)
 
 {% code overflow="wrap" %}
 ```bash
-sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7.1 --server https://192.168.56.111 --token mnb5t8g85nch64d4m95f2wdvlpcrv5lx82pcgxjd4jzm7dhmll9hng --ca-checksum 94bf5ab5d96599a7ec029e430bd2eb588bc9dd960ac676dd3b4532cba9216d6a --address 192.168.56.114 --internal-address 192.168.56.114 --worker
+sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run  rancher/rancher-agent:v2.7.1 --server https://192.168.56.10 --token v6wqbtdr8btnfdtvdnwcjqb6mf659nvmntnssjvg2g25fbcfxbg6s8 --ca-checksum 9120c03ac56d2be15ef71e68ce585ef06737c1457f55c8430fe5287bd3f3636a --address 192.168.56.114 --worker
 ```
 {% endcode %}
 
 
 
-after few minutes. create cluster is finished.
+provisioning cluster
+
+<figure><img src="../../.gitbook/assets/image (5).png" alt="provisioning cluster"><figcaption><p>provisioning cluster</p></figcaption></figure>
 
 
+
+about 15 minutes later. create cluster is finished.
+
+<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption><p>connected machine in cluster management</p></figcaption></figure>
+
+nodes in cluster
+
+<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
 
 
 ## References
+
+{% embed url="https://www.rancher.com/quick-start" %}
 
 {% embed url="https://ranchermanager.docs.rancher.com/v2.5/getting-started/quick-start-guides/deploy-rancher-manager/vagrant" %}
 
