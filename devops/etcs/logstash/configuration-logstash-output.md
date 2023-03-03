@@ -61,6 +61,14 @@ output {
 
 {% embed url="https://www.elastic.co/guide/en/logstash/current/codec-plugins.html" %}
 
+{% embed url="https://www.elastic.co/guide/en/logstash/current/input-plugins.html" %}
+
+{% embed url="https://www.elastic.co/guide/en/logstash/current/output-plugins.html" %}
+
+
+
+
+
 nc 명령어로 json 파일을 logstash로 전한다.
 
 {% code overflow="wrap" %}
