@@ -2,7 +2,7 @@
 
 ## Logstash 구성
 
-Logstash pipeling 은 3가지로 구성되어 있다.
+Logstash pipeline 은 3가지로 구성되어 있다.
 
 * Input
 * Filter
@@ -11,6 +11,10 @@ Logstash pipeling 은 3가지로 구성되어 있다.
 Output 값은 다양한 방법으로 저장하여 다양하게 확인이 가능하다.
 
 ex) stdout, file, elasticsearch, ...
+
+
+
+{% embed url="https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html" %}
 
 
 
@@ -54,6 +58,8 @@ output {
 {% endcode %}
 
 
+
+{% embed url="https://www.elastic.co/guide/en/logstash/current/codec-plugins.html" %}
 
 nc 명령어로 json 파일을 logstash로 전한다.
 
