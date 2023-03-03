@@ -94,7 +94,7 @@ Vagrant.configure("2") do |config|
 
     rancher.vm.provider "virtualbox" do |rv|
         rv.name = "rancher"
-        rv.memory = 4096
+        rv.memory = 6114
         rv.cpus = 2
     end
   end
