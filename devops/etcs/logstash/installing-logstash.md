@@ -46,6 +46,15 @@ sudo apt-get update && sudo apt-get install logstash
 
 
 
+## Running Daemon
+
+```bash
+sudo /bin/systemctl daemon-reload
+sudo /bin/systemctl enable logstash.service
+```
+
+
+
 ## Running Logstash
 
 ```bash
