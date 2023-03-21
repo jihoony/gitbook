@@ -68,6 +68,7 @@
     * [Installing Logstash](devops/etcs/logstash/installing-logstash.md)
     * [Configuration Logstash Output](devops/etcs/logstash/configuration-logstash-output.md)
   * [Rancher Install](devops/etcs/rancher-install.md)
+  * [Install ELK](devops/etcs/install-elk.md)
 * [Ubuntu](devops/ubuntu/README.md)
   * [Install SFTP Client](devops/ubuntu/install-sftp-client.md)
 
