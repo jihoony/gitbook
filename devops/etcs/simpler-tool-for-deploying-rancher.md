@@ -125,10 +125,22 @@ end
 
 Vagrant.configure("2") do |config|
 
- rancher = Node.new("rancher", 4, 4 * 1024, "192.168.56.10", [22, 80, 443, 8443], "rancher_install.sh")
- master1 = Node.new("master1", 2, 2 * 1024, "192.168.56.11", [], "docker_install.sh")
- master2 = Node.new("master2", 2, 2 * 1024, "192.168.56.12", [], "docker_install.sh")
- master3 = Node.new("master3", 2, 2 * 1024, "192.168.56.13", [], "docker_install.sh")
+ rancher = Node.new("rancher", 4, 4 * 1024, "192.168.56.10", [
+				 {guest: 80, host: 80},
+				 {guest: 443, host: 443},
+				 {guest: 8443, host: 8443}], "rancher_install.sh")
+
+ master1 = Node.new("master1", 2, 2 * 1024, "192.168.56.11", [
+				 {guest: 80, host: 20080},
+				 {guest: 443, host: 20443}], "docker_install.sh")
+
+ master2 = Node.new("master2", 2, 2 * 1024, "192.168.56.12", [
+				 {guest: 80, host: 20081},
+				 {guest: 443, host: 20443}], "docker_install.sh")
+
+ master3 = Node.new("master3", 2, 2 * 1024, "192.168.56.13", [
+				 {guest: 80, host: 20082},
+				 {guest: 443, host: 20444}], "docker_install.sh")
  worker1 = Node.new("worker1", 2, 2 * 1024, "192.168.56.14", [], "docker_install.sh")
  worker2 = Node.new("worker2", 2, 2 * 1024, "192.168.56.15", [], "docker_install.sh")
  worker3 = Node.new("worker3", 2, 2 * 1024, "192.168.56.16", [], "docker_install.sh")
@@ -147,7 +159,7 @@ Vagrant.configure("2") do |config|
 
 		ports = node.node_ports
 		ports.each do |port|
-			instance.vm.network "forwarded_port", guest: port, host: port
+			instance.vm.network "forwarded_port", port[:guest], host: port[:host]
 		end
 
 		instance.vm.provider "virtualbox" do |vb|
