@@ -100,15 +100,116 @@ This will give you the URL, username and password needed to log into Rancher. Fo
 
 If you want to build with virtualbox and vagrant, check below files:
 
-{% file src="../../.gitbook/assets/Vagrantfile" %}
+{% code title="Vagrantfile" overflow="wrap" lineNumbers="true" %}
+```ruby
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
 
-{% file src="../../.gitbook/assets/rancher_install.sh" %}
+class Node
+    def initialize(name, cpus, memory, ip, port, script)
+        @node_name = name
+        @node_cpus = cpus
+        @node_memory = memory
+        @node_ip = ip
+		@node_port = port
+        @node_script = script
+    end
 
-{% file src="../../.gitbook/assets/docker_install.sh" %}
+    attr_reader :node_name
+    attr_reader :node_cpus
+    attr_reader :node_memory
+    attr_reader :node_ip
+    attr_reader :node_port
+    attr_reader :node_script
+end
+
+Vagrant.configure("2") do |config|
+
+ rancher = Node.new("rancher", 4, 4 * 1024, "192.168.56.10", 8443, "rancher_install.sh")
+ master1 = Node.new("master1", 2, 2 * 1024, "192.168.56.11", nil, "docker_install.sh")
+ master2 = Node.new("master2", 2, 2 * 1024, "192.168.56.12", nil, "docker_install.sh")
+ master3 = Node.new("master3", 2, 2 * 1024, "192.168.56.13", nil, "docker_install.sh")
+ worker1 = Node.new("worker1", 2, 2 * 1024, "192.168.56.14", nil, "docker_install.sh")
+ worker2 = Node.new("worker2", 2, 2 * 1024, "192.168.56.15", nil, "docker_install.sh")
+
+
+ nodes = [rancher, master1, master2, master3, worker1, worker2]
+
+ nodes.each do |node|
+
+	config.vm.define node.node_name do |instance|
+
+ 		instance.vm.box = "ubuntu/focal64"
+		instance.vm.hostname = node.node_name + ".example.com"
+		instance.vm.network "private_network", ip: node.node_ip
+		instance.vm.provision "shell", path: node.node_script
+
+		if !node.node_port.nil? then
+			instance.vm.network "forwarded_port", guest: node.node_port, host: node.node_port
+		end
+
+		instance.vm.provider "virtualbox" do |vb|
+			vb.name = node.node_name
+			vb.cpus = node.node_cpus
+			vb.memory = node.node_memory
+		end
+	end
+ end
+
+end
+```
+{% endcode %}
+
+{% code title="rancher_install.sh" overflow="wrap" %}
+```bash
+#!/bin/bash
+
+# https://www.suse.com/c/rancher_blog/introducing-rancherd-a-simpler-tool-for-deploying-rancher/
+# export port 8443
+
+echo "[Task 1] Swapoff"
+swapoff -a
+
+# install rancher
+echo "[Task 2] Install rancher"
+curl -sfL https://get.rancher.io | sh -
+systemctl enable rancherd-server.service
+systemctl start rancherd-server.service
+
+# rancher config
+echo "[Task 3] config"
+export KUBECONFIG=/etc/rancher/rke2/rke2.yaml PATH=$PATH:/var/lib/rancher/rke2/bin
+
+
+echo 'export KUBECONFIG=/etc/rancher/rke2/rke2.yaml' >> ~/.bashrc
+echo 'export PATH=$PATH:/var/lib/rancher/rke2/bin' >> ~/.bashrc
+```
+{% endcode %}
 
 
 
+{% code title="docker_install.sh" overflow="wrap" %}
+```bash
+#!/bin/bash
+echo "[Node] Swap Off"
+swapoff -a
+
+# Install Docker
+echo "[Node] Install Docker"
+apt-get update && apt-get install -y ca-certificates curl gnupg lsb-release
+mkdir -m 0755 -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+apt-get update && apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+apt-get install -y vim net-tools
+
+systemctl daemon-reload && systemctl restart docker
 
 
-
+echo "[Node] ifconfig"
+ifconfig | grep inet
+```
+{% endcode %}
 
