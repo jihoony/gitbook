@@ -131,9 +131,10 @@ Vagrant.configure("2") do |config|
  master3 = Node.new("master3", 2, 2 * 1024, "192.168.56.13", nil, "docker_install.sh")
  worker1 = Node.new("worker1", 2, 2 * 1024, "192.168.56.14", nil, "docker_install.sh")
  worker2 = Node.new("worker2", 2, 2 * 1024, "192.168.56.15", nil, "docker_install.sh")
+ worker3 = Node.new("worker3", 2, 2 * 1024, "192.168.56.16", nil, "docker_install.sh")
 
 
- nodes = [rancher, master1, master2, master3, worker1, worker2]
+ nodes = [rancher, master1, master2, master3, worker1, worker2, worker3]
 
  nodes.each do |node|
 
