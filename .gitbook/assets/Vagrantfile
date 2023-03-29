@@ -1,0 +1,59 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+#ENV['VAGRANT_NO_PARALLEL'] = 'yes'
+
+class Node
+    def initialize(name, cpus, memory, ip, port, script)
+        @node_name = name
+        @node_cpus = cpus
+        @node_memory = memory
+        @node_ip = ip
+		@node_port = port
+        @node_script = script
+    end
+
+    attr_reader :node_name
+    attr_reader :node_cpus
+    attr_reader :node_memory
+    attr_reader :node_ip
+    attr_reader :node_port
+    attr_reader :node_script
+end
+
+Vagrant.configure("2") do |config|
+
+#config.vm.provision "shell", path: "common.sh"
+
+ rancher = Node.new("rancher", 4, 4 * 1024, "192.168.56.10", 8443, "rancher_install.sh")
+ master1 = Node.new("master1", 2, 2 * 1024, "192.168.56.11", nil, "docker_install.sh")
+ master2 = Node.new("master2", 2, 2 * 1024, "192.168.56.12", nil, "docker_install.sh")
+ master3 = Node.new("master3", 2, 2 * 1024, "192.168.56.13", nil, "docker_install.sh")
+ worker1 = Node.new("worker1", 2, 2 * 1024, "192.168.56.14", nil, "docker_install.sh")
+ worker2 = Node.new("worker2", 2, 2 * 1024, "192.168.56.15", nil, "docker_install.sh")
+
+
+ nodes = [rancher, master1, master2, master3, worker1, worker2]
+
+ nodes.each do |node|
+
+	config.vm.define node.node_name do |instance|
+	
+ 		instance.vm.box = "ubuntu/focal64"
+		instance.vm.hostname = node.node_name + ".example.com"
+		instance.vm.network "private_network", ip: node.node_ip
+		instance.vm.provision "shell", path: node.node_script
+
+		if !node.node_port.nil? then
+			instance.vm.network "forwarded_port", guest: node.node_port, host: node.node_port
+		end
+
+		instance.vm.provider "virtualbox" do |vb|
+			vb.name = node.node_name
+			vb.cpus = node.node_cpus
+			vb.memory = node.node_memory
+		end
+	end
+ end
+
+end
