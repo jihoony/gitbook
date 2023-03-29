@@ -141,7 +141,7 @@ Vagrant.configure("2") do |config|
 	config.vm.define node.node_name do |instance|
 
  		instance.vm.box = "ubuntu/focal64"
-		instance.vm.hostname = node.node_name + ".example.com"
+		instance.vm.hostname = node.node_name
 		instance.vm.network "private_network", ip: node.node_ip
 		instance.vm.provision "shell", path: node.node_script
 
@@ -198,13 +198,8 @@ swapoff -a
 
 # Install Docker
 echo "[Node] Install Docker"
-apt-get update && apt-get install -y ca-certificates curl gnupg lsb-release
-mkdir -m 0755 -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+curl https://releases.rancher.com/install-docker/20.10.sh | sh
 
-apt-get update && apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 apt-get install -y vim net-tools
 
 systemctl daemon-reload && systemctl restart docker
