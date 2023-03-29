@@ -141,6 +141,7 @@ Vagrant.configure("2") do |config|
  master3 = Node.new("master3", 2, 2 * 1024, "192.168.56.13", [
 				 {guest: 80, host: 20082},
 				 {guest: 443, host: 20444}], "docker_install.sh")
+				
  worker1 = Node.new("worker1", 2, 2 * 1024, "192.168.56.14", [], "docker_install.sh")
  worker2 = Node.new("worker2", 2, 2 * 1024, "192.168.56.15", [], "docker_install.sh")
  worker3 = Node.new("worker3", 2, 2 * 1024, "192.168.56.16", [], "docker_install.sh")
