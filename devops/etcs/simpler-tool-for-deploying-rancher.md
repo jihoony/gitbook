@@ -162,6 +162,12 @@ end
 ```
 {% endcode %}
 
+
+
+**Rancher Port Requirements**
+
+{% embed url="https://ranchermanager.docs.rancher.com/v2.5/getting-started/installation-and-upgrade/installation-requirements/port-requirements" %}
+
 {% code title="rancher_install.sh" overflow="wrap" %}
 ```bash
 #!/bin/bash
