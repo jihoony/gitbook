@@ -66,7 +66,7 @@ int main () {c
 
 ```
 
-****
+
 
 ## **strcpy**
 
@@ -180,7 +180,7 @@ int main() {
 
 ```
 
-****
+
 
 ## **printf and friends**
 
