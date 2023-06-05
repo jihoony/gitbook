@@ -30,4 +30,4 @@ class ServiceTest{
 
 ## Appendix
 
-https://www.baeldung.com/parameterized-tests-junit-5
+{% embed url="https://www.baeldung.com/parameterized-tests-junit-5" %}
