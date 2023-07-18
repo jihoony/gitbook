@@ -683,7 +683,7 @@ The **-section** option was added in OpenSSL 3.0.0.
 
 The **-multivalue-rdn** option has become obsolete in OpenSSL 3.0.0 and has no effect.
 
-The **-engine** option was deprecated in OpenSSL 3.0. The <-nodes> option was deprecated in OpenSSL 3.0, too; use **-noenc** instead.
+The **-engine** option was deprecated in OpenSSL 3.0. The < -nodes > option was deprecated in OpenSSL 3.0, too; use **-noenc** instead.
 
 The **-reqexts** option has been made an alias of **-extensions** in OpenSSL 3.2.
 
@@ -699,4 +699,10 @@ Licensed under the Apache License 2.0 (the "License"). You may not use this file
 
 
 
+**openssl-req**
+
 {% embed url="https://www.openssl.org/docs/manmaster/man1/openssl-req.html" %}
+
+**x509v3\_config**
+
+{% embed url="https://www.openssl.org/docs/man3.0/man5/x509v3_config.html" %}
