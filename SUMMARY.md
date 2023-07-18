@@ -80,3 +80,4 @@
   * [Useful Tools](etcs/etcs/useful-tools.md)
   * [Links](etcs/etcs/links.md)
   * [Entertainment](etcs/etcs/entertainment.md)
+  * [OpenSSL Command](etcs/etcs/openssl-command.md)
