@@ -53,6 +53,7 @@
 ## OpenSSL
 
 * [openssl-req](openssl/openssl-req.md)
+* [x509v3\_config](openssl/x509v3\_config.md)
 
 ## DevOps
 
