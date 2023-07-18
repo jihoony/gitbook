@@ -565,3 +565,9 @@ openssl-req(1), openssl-ca(1), openssl-x509(1), ASN1\_generate\_nconf(3)
 Copyright 2004-2022 The OpenSSL Project Authors. All Rights Reserved.
 
 Licensed under the Apache License 2.0 (the "License"). You may not use this file except in compliance with the License. You can obtain a copy in the file LICENSE in the source distribution or at [https://www.openssl.org/source/license.html](https://www.openssl.org/source/license.html).
+
+
+
+**x509v3\_config**
+
+{% embed url="https://www.openssl.org/docs/manmaster/man5/x509v3_config.html" %}
