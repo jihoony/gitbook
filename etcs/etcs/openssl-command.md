@@ -1,6 +1,6 @@
 # OpenSSL Command
 
-### OpenSSL Command
+## OpenSSL Command
 
 ```bash
 root@b892fc78f0ae:/tmp# openssl help
@@ -50,7 +50,56 @@ sm4-ctr           sm4-ecb           sm4-ofb
 root@b892fc78f0ae:/tmp#
 ```
 
-#### X509 Sub-Command
+### Req Sub-Command
+
+| Sub-Command         | Description                                                                            |
+| ------------------- | -------------------------------------------------------------------------------------- |
+| -help               | Display this summary                                                                   |
+| -inform PEM         | DER                                                                                    |
+| -outform PEM        | DER                                                                                    |
+| -in infile          | Input file                                                                             |
+| -out outfile        | Output file                                                                            |
+| -key val            | Private key to use                                                                     |
+| -keyform format     | Key file format                                                                        |
+| -pubkey             | Output public key                                                                      |
+| -new                | New request                                                                            |
+| -config infile      | Request template file                                                                  |
+| -keyout outfile     | File to send the key to                                                                |
+| -passin val         | Private key password source                                                            |
+| -passout val        | Output file pass phrase source                                                         |
+| -rand val           | Load the file(s) into the random number generator                                      |
+| -writerand outfile  | Write random data to the specified file                                                |
+| -newkey val         | Specify as type:bits                                                                   |
+| -pkeyopt val        | Public key options as opt:value                                                        |
+| -sigopt val         | Signature parameter in n:v form                                                        |
+| -batch              | Do not ask anything during request generation                                          |
+| -newhdr             | Output "NEW" in the header lines                                                       |
+| -modulus            | RSA modulus                                                                            |
+| -verify             | Verify signature on REQ                                                                |
+| -nodes              | Don't encrypt the output key                                                           |
+| -noout              | Do not output REQ                                                                      |
+| -verbose            | Verbose output                                                                         |
+| -utf8               | Input characters are UTF8 (default ASCII)                                              |
+| -nameopt val        | Various certificate name options                                                       |
+| -reqopt val         | Various request text options                                                           |
+| -text               | Text form of request                                                                   |
+| -x509               | <p>Output a x509 structure instead of a cert request</p><p>(Required by some CA's)</p> |
+| -subj val           | Set or modify request subject                                                          |
+| -subject            | Output the request's subject                                                           |
+| -multivalue-rdn     | Enable support for multivalued RDNs                                                    |
+| -days +int          | Number of days cert is valid for                                                       |
+| -set\_serial val    | Serial number to use                                                                   |
+| -addext val         | Additional cert extension key=value pair (may be given more than once)                 |
+| -extensions val     | Cert extension section (override value in config file)                                 |
+| -reqexts val        | Request extension section (override value in config file)                              |
+| -precert            | Add a poison extension (implies -new)                                                  |
+| -\*                 | Any supported digest                                                                   |
+| -engine val         | Use engine, possibly a hardware device                                                 |
+| -keygen\_engine val | Specify engine to be used for key genration operations                                 |
+
+
+
+### X509 Sub-Command
 
 | Sub-Command           | Description                                                                             |
 | --------------------- | --------------------------------------------------------------------------------------- |
