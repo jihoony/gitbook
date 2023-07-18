@@ -44,7 +44,7 @@ This command primarily creates and processes certificate requests (CSRs) in PKCS
 
 **-in** _filename_
 
-> This specifies the input filename to read a request from. This defaults to standard input unless -x509 or -CA is specified. A request is only read if the creation options (-new or -newkey or -precert) are not specified.
+> This specifies the input filename to read a request from. This defaults to standard input unless **-x509** or **-CA** is specified. A request is only read if the creation options (**-new** or **-newkey** or **-precert**) are not specified.
 
 
 
@@ -62,13 +62,13 @@ This command primarily creates and processes certificate requests (CSRs) in PKCS
 
 **-passin** _arg_
 
-> The password source for private key and certificate input. For more information about the format of arg see openssl-passphrase-options(1).
+> The password source for private key and certificate input. For more information about the format of **arg** see openssl-passphrase-options(1).
 
 
 
 **-passout** _arg_
 
-> The password source for the output file. For more information about the format of arg see openssl-passphrase-options(1).
+> The password source for the output file. For more information about the format of **arg** see openssl-passphrase-options(1).
 
 
 
@@ -86,7 +86,7 @@ This command primarily creates and processes certificate requests (CSRs) in PKCS
 
 **-subject**
 
-> Prints out the certificate request subject (or certificate subject if -x509 is in use).
+> Prints out the certificate request subject (or certificate subject if **-x509** is in use).
 
 
 
@@ -118,27 +118,27 @@ This command primarily creates and processes certificate requests (CSRs) in PKCS
 
 > This option generates a new certificate request. It will prompt the user for the relevant field values. The actual fields prompted for and their maximum and minimum sizes are specified in the configuration file and any requested extensions.
 >
-> If the -key option is not given it will generate a new private key using information specified in the configuration file or given with the -newkey and -pkeyopt options, else by default an RSA key with 2048 bits length.
+> If the **-key** option is not given it will generate a new private key using information specified in the configuration file or given with the **-newkey** and **-pkeyopt** options, else by default an RSA key with 2048 bits length.
 
 
 
 **-newkey** _arg_
 
-> This option is used to generate a new private key unless -key is given. It is subsequently used as if it was given using the -key option.
+> This option is used to generate a new private key unless **-key** is given. It is subsequently used as if it was given using the **-key** option.
 >
-> This option implies the -new flag to create a new certificate request or a new certificate in case -x509 is used.
+> This option implies the **-new** flag to create a new certificate request or a new certificate in case **-x509** is used.
 >
 > The argument takes one of several forms.
 >
-> **\[rsa:]**_nbits_ generates an RSA key _nbits_ in size. If _nbits_ is omitted, i.e., -newkey rsa is specified, the default key size specified in the configuration file with the default\_bits option is used if present, else 2048.
+> **\[rsa:]**_nbits_ generates an RSA key _nbits_ in size. If _nbits_ is omitted, i.e., **-newkey** **rsa** is specified, the default key size specified in the configuration file with the **default\_bits** option is used if present, else 2048.
 >
-> All other algorithms support the -newkey _algname_:_file_ form, where _file_ is an algorithm parameter file, created with `openssl genpkey -genparam` or an X.509 certificate for a key with appropriate algorithm.
+> All other algorithms support the **-newkey** _algname_:_file_ form, where _file_ is an algorithm parameter file, created with `openssl genpkey -genparam` or an X.509 certificate for a key with appropriate algorithm.
 >
 > **param:**_file_ generates a key using the parameter file or certificate _file_, the algorithm is determined by the parameters.
 >
-> _**algname**_\[:_file_] generates a key using the given algorithm _algname_. If a parameter file _file_ is given then the parameters specified there are used, where the algorithm parameters must match _algname_. If algorithm parameters are not given, any necessary parameters should be specified via the -pkeyopt option.
+> _algname_\[:_file_] generates a key using the given algorithm _algname_. If a parameter file _file_ is given then the parameters specified there are used, where the algorithm parameters must match _algname_. If algorithm parameters are not given, any necessary parameters should be specified via the **-pkeyopt** option.
 >
-> **dsa:**_filename_ generates a DSA key using the parameters in the file _filename_. ec:_filename_ generates EC key (usable both with ECDSA or ECDH algorithms), gost2001:_filename_ generates GOST R 34.10-2001 key (requires gost engine configured in the configuration file). If just gost2001 is specified a parameter set should be specified by -pkeyopt _paramset:X_
+> **dsa:**_filename_ generates a DSA key using the parameters in the file _filename_. **ec**:_filename_ generates EC key (usable both with ECDSA or ECDH algorithms), **gost2001**:_filename_ generates GOST R 34.10-2001 key (requires **gost** engine configured in the configuration file). If just **gost2001** is specified a parameter set should be specified by **-pkeyopt** _paramset:X_
 
 
 
@@ -150,7 +150,7 @@ This command primarily creates and processes certificate requests (CSRs) in PKCS
 
 **-key** _filename_|_uri_
 
-> This option provides the private key for signing a new certificate or certificate request. Unless -in is given, the corresponding public key is placed in the new certificate or certificate request, resulting in a self-signature.
+> This option provides the private key for signing a new certificate or certificate request. Unless **-in** is given, the corresponding public key is placed in the new certificate or certificate request, resulting in a self-signature.
 >
 > For certificate signing this option is overridden by the **-CA** option.
 >
@@ -434,13 +434,13 @@ The options available are described in detail below.
 
 **x509\_extensions**
 
-> This specifies the configuration file section containing a list of extensions to add to certificate generated when -x509 is in use. It can be overridden by the **-extensions** command line switch.
+> This specifies the configuration file section containing a list of extensions to add to certificate generated when **-x509** is in use. It can be overridden by the **-extensions** command line switch.
 
 
 
 **prompt**
 
-> If set to the value no this disables prompting of certificate fields and just takes values from the config file directly. It also changes the expected format of the distinguished\_name and attributes sections.
+> If set to the value no this disables prompting of certificate fields and just takes values from the config file directly. It also changes the expected format of the **distinguished\_name** and **attributes** sections.
 
 
 
@@ -491,7 +491,9 @@ Some fields (such as organizationName) can be used more than once in a DN. This 
 
 The actual permitted field names are any object identifier short or long names. These are compiled into OpenSSL and include the usual values such as commonName, countryName, localityName, organizationName, organizationalUnitName, stateOrProvinceName. Additionally emailAddress is included as well as name, surname, givenName, initials, and dnQualifier.
 
-Additional object identifiers can be defined with the oid\_file or oid\_section options in the configuration file. Any additional fields will be treated as though they were a DirectoryString.
+Additional object identifiers can be defined with the **oid\_file** or **oid\_section** options in the configuration file. Any additional fields will be treated as though they were a DirectoryString.
+
+
 
 ### EXAMPLES <a href="#examples" id="examples"></a>
 
@@ -677,15 +679,15 @@ openssl(1), openssl-x509(1), openssl-ca(1), openssl-genrsa(1), openssl-gendsa(1)
 
 #### HISTORY <a href="#history" id="history"></a>
 
-The -section option was added in OpenSSL 3.0.0.
+The **-section** option was added in OpenSSL 3.0.0.
 
-The -multivalue-rdn option has become obsolete in OpenSSL 3.0.0 and has no effect.
+The **-multivalue-rdn** option has become obsolete in OpenSSL 3.0.0 and has no effect.
 
-The -engine option was deprecated in OpenSSL 3.0. The <-nodes> option was deprecated in OpenSSL 3.0, too; use -noenc instead.
+The **-engine** option was deprecated in OpenSSL 3.0. The <-nodes> option was deprecated in OpenSSL 3.0, too; use **-noenc** instead.
 
-The -reqexts option has been made an alias of -extensions in OpenSSL 3.2.
+The **-reqexts** option has been made an alias of **-extensions** in OpenSSL 3.2.
 
-Since OpenSSL 3.2, generated certificates bear X.509 version 3 unless -x509v1 is given, and key identifier extensions are included by default.
+Since OpenSSL 3.2, generated certificates bear X.509 version 3 unless **-x509v1** is given, and key identifier extensions are included by default.
 
 
 
