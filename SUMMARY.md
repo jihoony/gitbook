@@ -52,7 +52,6 @@
 
 ## OpenSSL
 
-* [Page 1](openssl/page-1.md)
 * [openssl-req](openssl/openssl-req.md)
 
 ## DevOps
