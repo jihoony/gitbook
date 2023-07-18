@@ -50,6 +50,11 @@
   * [OpenSSL](developer/cryptography/openssl/README.md)
     * [OpenSSL guide](developer/cryptography/openssl/openssl-guide.md)
 
+## OpenSSL
+
+* [Page 1](openssl/page-1.md)
+* [openssl-req](openssl/openssl-req.md)
+
 ## DevOps
 
 * [Docker](devops/docker/README.md)
@@ -80,4 +85,3 @@
   * [Useful Tools](etcs/etcs/useful-tools.md)
   * [Links](etcs/etcs/links.md)
   * [Entertainment](etcs/etcs/entertainment.md)
-  * [OpenSSL Command](etcs/etcs/openssl-command.md)
