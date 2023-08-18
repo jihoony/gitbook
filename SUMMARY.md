@@ -49,13 +49,13 @@
   * [사용법, tip 정리](developer/cryptography/tip.md)
   * [OpenSSL](developer/cryptography/openssl/README.md)
     * [OpenSSL guide](developer/cryptography/openssl/openssl-guide.md)
-* [PKCS#11](developer/pkcs-11/README.md)
-  * [PKCS#11 API-강좌1](developer/pkcs-11/pkcs-11-api-1.md)
-  * [PKCS#11 API-강좌2](developer/pkcs-11/pkcs-11-api-2.md)
-  * [PKCS#11 API-강좌3](developer/pkcs-11/pkcs-11-api-3.md)
-  * [PKCS#11 API-강좌4](developer/pkcs-11/pkcs-11-api-4.md)
-  * [PKCS#11 API-강좌5(C 언어로 된 Sample Code)](developer/pkcs-11/pkcs-11-api-5-c-sample-code.md)
-  * [PKCS#11 API-강좌6(EC Key 생성 및 Signing)](developer/pkcs-11/pkcs-11-api-6-ec-key-signing.md)
+* [PKCS#11 API](developer/pkcs-11-api/README.md)
+  * [PKCS#11 API-강좌1](developer/pkcs-11-api/pkcs-11-api-1.md)
+  * [PKCS#11 API-강좌2](developer/pkcs-11-api/pkcs-11-api-2.md)
+  * [PKCS#11 API-강좌3](developer/pkcs-11-api/pkcs-11-api-3.md)
+  * [PKCS#11 API-강좌4](developer/pkcs-11-api/pkcs-11-api-4.md)
+  * [PKCS#11 API-강좌5(C 언어로 된 Sample Code)](developer/pkcs-11-api/pkcs-11-api-5-c-sample-code.md)
+  * [PKCS#11 API-강좌6(EC Key 생성 및 Signing)](developer/pkcs-11-api/pkcs-11-api-6-ec-key-signing.md)
 
 ## OpenSSL
 
