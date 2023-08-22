@@ -16,9 +16,15 @@ PKCS#11 API 란 HSM 장비를 Call 하기 위해 만든 표준 I/F 중의 하나
 
 ### Token 과 Slot
 
-Cryptoki를 처음 디자인 할 때, Private-Key 와 같은 중요한 Cryptographic 정보를 Smart Card와 같이 이동이 가능한 Token(Cryptographic Token을 줄여서 Token이라 함)에 저장하는 것을 고려 하였기 때문에, Slot 이란 개념이 함께 생겼습니다. Smart Card(암호정보를 보관하는 Token의 한 종류)를 사용하려면, Smart Card Reader라는 장치에 Smart Card를 집어넣어 사용해야 합니다. Smart Card Reader 장치와 같은 역할을 하는 것을 Slot 이라고 부릅니다. 즉 Cryptoki 가 Token을 Access하려면, Slot에 Token이 장착되어 있어야 합니다. HSM 장비는 Token이 Slot에 장착된 장비라고 보면 됩니다. 즉 영문으로는 표현하면 “Slot with token present” 가 됩니다.  HSM 장비 기준으로 보면 Slot과 Token이 1대1로 mapping이 되므로, Token이 곧 바로 Slot이 됩니다. 따라서 Cryptoki 에서는 HSM 장비를 Slot으로 보고 Access합니다.  즉 Cryptoki 관점에서 보면, HSM 장비는 한 개의 Slot 입니다. 여러 개의 Slot이 사용될 수 있으므로, Cryptoki는 Slot 번호로 Slot을 선택하여 사용합니다. 참고로, 당사에서 제공하는 KeyperPlus 장비는 하나의 장비에 최대 150개까지 Slot을 Define 할 수 있습니다. 대부분의 어플리케이션에서는 KeyperPlus를 하나의 Slot 으로만 사용한다고 합니다.
+Cryptoki를 처음 디자인 할 때, Private-Key 와 같은 중요한 Cryptographic 정보를 Smart Card와 같이 이동이 가능한 Token(Cryptographic Token을 줄여서 Token이라 함)에 저장하는 것을 고려 하였기 때문에, Slot 이란 개념이 함께 생겼습니다. Smart Card(암호정보를 보관하는 Token의 한 종류)를 사용하려면, Smart Card Reader라는 장치에 Smart Card를 집어넣어 사용해야 합니다. Smart Card Reader 장치와 같은 역할을 하는 것을 Slot 이라고 부릅니다. 즉 Cryptoki 가 Token을 Access하려면, Slot에 Token이 장착되어 있어야 합니다. HSM 장비는 Token이 Slot에 장착된 장비라고 보면 됩니다. 즉 영문으로는 표현하면 “Slot with token present” 가 됩니다.  HSM 장비 기준으로 보면 Slot과 Token이 1대1로 mapping이 되므로, Token이 곧 바로 Slot이 됩니다. 따라서 Cryptoki 에서는 HSM 장비를 Slot으로 보고 Access합니다.  즉 Cryptoki 관점에서 보면, HSM 장비는 한 개의 Slot 입니다. 여러 개의 Slot이 사용될 수 있으므로, Cryptoki는 Slot 번호로 Slot을 선택하여 사용합니다.
+
+> 참고로, 당사에서 제공하는 KeyperPlus 장비는 하나의 장비에 최대 150개까지 Slot을 Define 할 수 있습니다. 대부분의 어플리케이션에서는 KeyperPlus를 하나의 Slot 으로만 사용한다고 합니다.
+
+
 
 ![](https://mblogthumb-phinf.pstatic.net/20160705\_195/aepkoreanet\_1467720976084wWvBT\_JPEG/slot.jpg?type=w2)
+
+
 
 또한 다수의 Application이 다수의 Slot을 서로 공유하기도 하고 경쟁하기도 할 수 있으므로 Cryptoki Module의 개념은 아래 그림과 같습니다.
 
@@ -40,9 +46,13 @@ Token Object는 Token 즉 HSM 장비에 저장되는 Object이며, Session Objec
 
 Access 권리에 따라, Private Object와 Public Object로 나누어 집니다. 즉 Private Object는 인가된 사용자만 Access할 수 있습니다.
 
-당사가 제공하는 KeyperPlus에서는 Key Object 중, Private-Key와 Secrete Key만 HSM 장비안에 저장하고, 나머지 Object(Public-Key Object, Certificate Object, Data Object)는 Cryptoki가 있는 서버의 특정 영역에 암호화되어 저장됩니다.(기술적으로 Public-Key Object에 대한 정보는  KeyperPlus내에 Private-Key와 함께 저장됩니다만, Public-Key는 보호하는 Key가 아니므로 Private-Key만 저장되어 있다고 표현하고 있습니다). HSM 장비 안에 저장되는 Key를 Application Key라고 부릅니다.
+당사가 제공하는 KeyperPlus에서는 Key Object 중, Private-Key와 Secrete Key만 HSM 장비안에 저장하고, 나머지 Object(Public-Key Object, Certificate Object, Data Object)는 Cryptoki가 있는 서버의 특정 영역에 암호화되어 저장됩니다.
 
-KeyperPlus에서 Key가 생성될 때(Generation 또는 Import), “Key Policy” 를 정해 주어야 합니다. Key Policy에는 Key로 무엇을 할 수 있는 지(Sign, Encrypt,  Decrypt 등), Export는 어떻게 되는 지(No Export, Wrapped only Export, Plain text Export 등)를 정해 주어야 합니다. Key가 생성되고 난 후에는 “Key Policy”는 변경 될 수 없습니다.
+> 기술적으로 Public-Key Object에 대한 정보는  KeyperPlus내에 Private-Key와 함께 저장됩니다만, Public-Key는 보호하는 Key가 아니므로 Private-Key만 저장되어 있다고 표현하고 있습니다.
+
+HSM 장비 안에 저장되는 Key를 Application Key라고 부릅니다.
+
+> KeyperPlus에서 Key가 생성될 때(Generation 또는 Import), “Key Policy” 를 정해 주어야 합니다. Key Policy에는 Key로 무엇을 할 수 있는 지(Sign, Encrypt,  Decrypt 등), Export는 어떻게 되는 지(No Export, Wrapped only Export, Plain text Export 등)를 정해 주어야 합니다. Key가 생성되고 난 후에는 “Key Policy”는 변경 될 수 없습니다.
 
 &#x20;
 
@@ -54,7 +64,7 @@ Read/Write(R/W) Session이 있고, Read-Only Session이 있는 데, Token Object
 
 HSM 장비를 Access 하기 위해 Session을 Open할 때 C\_OpenSession() 함수를 Call하는데, flag변수로 “CKF\_SERIAL\_SESSION|CKF\_RW\_SESSION” 값만 사용하면 됩니다. CKF\_SERIAL\_SESSION은 호환성을 유지하기 위하여 사용해야 한다고 합니다.
 
-표준으로 제공하는 문서에 보면 자세하게 설명을 하고 있고 내용도 많지만, KeyperPlus와 같은 HSM 장비를 Access하는 Application을 cording하는 데는, 기본적인 개념만 이해하고 나머지는 무시를 해도 어려움이 없기 때문에 생략을 하고자 합니다(Session의 개념을 디자인한 분에게는 죄송스럽지만, 디자인하신 분의 의도를 정확히 안다고 해도, Cryptoki Coding을 더 잘 할 수 있는 것도 아니고, Session의 자세한 기능을 모른다고 해도 Cryptoki Coding을 하는 데 특별한 어려움이  없기 때문입니다). 하지만, Session의 다양한 기능을 필요로 하는 Application을 개발하시는 분들은  표준 문서에 기술된 내용을 자세히 이해하실 필요가 있다고 생각합니다.
+> 표준으로 제공하는 문서에 보면 자세하게 설명을 하고 있고 내용도 많지만, KeyperPlus와 같은 HSM 장비를 Access하는 Application을 cording하는 데는, 기본적인 개념만 이해하고 나머지는 무시를 해도 어려움이 없기 때문에 생략을 하고자 합니다(Session의 개념을 디자인한 분에게는 죄송스럽지만, 디자인하신 분의 의도를 정확히 안다고 해도, Cryptoki Coding을 더 잘 할 수 있는 것도 아니고, Session의 자세한 기능을 모른다고 해도 Cryptoki Coding을 하는 데 특별한 어려움이  없기 때문입니다). 하지만, Session의 다양한 기능을 필요로 하는 Application을 개발하시는 분들은  표준 문서에 기술된 내용을 자세히 이해하실 필요가 있다고 생각합니다.
 
 
 
@@ -62,7 +72,7 @@ HSM 장비를 Access 하기 위해 Session을 Open할 때 C\_OpenSession() 함�
 
 Cryptoki는 두 가지 종류의 사용자를 인식합니다. Normal User만이 Token에 저장된 Object를 Access할 수 있습니다. 물론 Access하기 전에 적법한 사용자인지 Authentication(인증) 과정을 거칩니다. SO는 Token을 초기화 시키거나 Normal User의 PIN 번호를 지정하는 역할을 수행 합니다. 따라서 Token을 초기화 시키는 경우나 PIN 번호를 변경하는 경우가 아니면 SO는 필요하지 않습니다.
 
-당사가 제공하는 KeyperPlus에서는 InitToken 이라는 Utility를 사용하여, 장비를 초기화 시킬 때, SO 와 Normal User에게 PIN 번호를 부여 합니다. 추후 Application에서 사용시는 Normal User의 PIN번호만 사용합니다.
+> 당사가 제공하는 KeyperPlus에서는 InitToken 이라는 Utility를 사용하여, 장비를 초기화 시킬 때, SO 와 Normal User에게 PIN 번호를 부여 합니다. 추후 Application에서 사용시는 Normal User의 PIN번호만 사용합니다.
 
 
 

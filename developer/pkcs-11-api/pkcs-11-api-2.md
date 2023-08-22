@@ -6,9 +6,9 @@
 
 ### 지원하는 Security 기능
 
-Private-Key 와 같은 중요한 Cryptographic 정보가 HSM 장비에 저장되기 때문에, Security를 보장하기 위하여 지원하는 기능은 먼저 Token에 Access시 PIN 번호를 입력하도록 하여 PIN 번호를 알고 있는 사용자에게만  Access 권한을 부여하도록 하고 있으며, 또한 Private-Key나 Secrete-Key를 생성시 “sensitive” 나 “unextractable” 과 같은 Key Policy를 지정하여 생성토록 하고 있습니다. Sensitive Key는 Plain-Text 형태로 Token 외부로 나오지 못하며, Unextractable Key는 Token 외부로 나오는 것 자체가 불가능 합니다.(Encryption 시켜도 Export가 불가능 하다라는 의미입니다)
+Private-Key 와 같은 중요한 Cryptographic 정보가 HSM 장비에 저장되기 때문에, Security를 보장하기 위하여 지원하는 기능은 먼저 Token에 Access시 PIN 번호를 입력하도록 하여 PIN 번호를 알고 있는 사용자에게만  Access 권한을 부여하도록 하고 있으며, 또한 Private-Key나 Secret-Key를 생성시 “sensitive” 나 “unextractable” 과 같은 Key Policy를 지정하여 생성토록 하고 있습니다. Sensitive Key는 Plain-Text 형태로 Token 외부로 나오지 못하며, Unextractable Key는 Token 외부로 나오는 것 자체가 불가능 합니다.(Encryption 시켜도 Export가 불가능 하다라는 의미입니다)
 
-참고로, 당사가 공급하는 KeyperPlus 장비에서는, 장비 자체에서 API 레벨로 Key Policy를 지정하게 하는 기능도 제공합니다. 예를 들면, Key Delete API 기능을 disable 시키면, PKCS#11 API로 Key를 delete할 수 없습니다, 또 Signing API기능을 disable 시키면, PKCS#11 API로 signing을 할 수 없습니다. Signing이 아주 중요한 업무인 경우는, 필요시에만, Signing API를 enable시켜서 사용하는 정책을 사용하면, HSM 장비를 Access하는 어플리케이션 서버를 해커가 장악하더라도, Signing을 못하게 할 수 있습니다. 물론 HSM 장비를 사용시에만 LAN선을 연결하고(또는 On-Line으로 설정), 평상시에는 LAN선을 연결하지 않는 정책(Policy)을 사용해도 동일한 효과를 얻을 수 있습니다. 하지만 HSM을 사용하는 기업의 목적과 상황이 다르기 때문에, 해당 기업에 맞게 정책(Policy)를 정해 놓고 준수하면 됩니다.
+> 참고로, 당사가 공급하는 KeyperPlus 장비에서는, 장비 자체에서 API 레벨로 Key Policy를 지정하게 하는 기능도 제공합니다. 예를 들면, Key Delete API 기능을 disable 시키면, PKCS#11 API로 Key를 delete할 수 없습니다, 또 Signing API기능을 disable 시키면, PKCS#11 API로 signing을 할 수 없습니다. Signing이 아주 중요한 업무인 경우는, 필요시에만, Signing API를 enable시켜서 사용하는 정책을 사용하면, HSM 장비를 Access하는 어플리케이션 서버를 해커가 장악하더라도, Signing을 못하게 할 수 있습니다. 물론 HSM 장비를 사용시에만 LAN선을 연결하고(또는 On-Line으로 설정), 평상시에는 LAN선을 연결하지 않는 정책(Policy)을 사용해도 동일한 효과를 얻을 수 있습니다. 하지만 HSM을 사용하는 기업의 목적과 상황이 다르기 때문에, 해당 기업에 맞게 정책(Policy)를 정해 놓고 준수하면 됩니다.
 
 
 
@@ -16,7 +16,7 @@ Private-Key 와 같은 중요한 Cryptographic 정보가 HSM 장비에 저장되
 
 Cryptoki API는 C (or C++) 언어를 사용하여 구현하였고,  Cryptoki에서 사용하는 Data 형식은 API와 함께 제공되는 Header file에 define되어 있습니다. 일부 Data 형식은 사용하는 Platform OS (Windows, UNIX, Linux) 나 Platform에서 지원하는 C Compiler 버전에 따라 다를 수 있으므로, Header file 보다 앞에서 preprocessor directives로 처리하고 있습니다. 따라서 Cryptoki API를 사용하는 Source file에서 preprocessor directives를 기술해야 합니다.
 
-HSM 벤더에서 함께 제공하는 Sample Code에 다 구현되어 있으므로, 그냥 사용하면 됩니다(KeyperPlus에서는 C++ Sample Code를 제공하고 있습니다)
+> HSM 벤더에서 함께 제공하는 Sample Code에 다 구현되어 있으므로, 그냥 사용하면 됩니다(KeyperPlus에서는 C++ Sample Code를 제공하고 있습니다)
 
 
 
@@ -74,7 +74,7 @@ Cryptoki 에서 사용하고 있는 값들은 CK\_xxx, CKA\_xxx, CKF\_xxx, CKK\_
 
 지금까지 개념적인 내용을 위주로 설명하였는 데, 이는 나무를 보기 전에 멀리서 숲을 보고자 하는 목적 이었습니다. 전체적인 개념을 잡고 있으면, 실무에 적용하는 작업을 보다 쉽게 할 수 있기 때문입니다.
 
-KeyperPlus에서 제공하는 Sample Code를 위주로 큰 뼈대만 구현한 Source Code를 가지고 설명을 드리고자 합니다.
+> KeyperPlus에서 제공하는 Sample Code를 위주로 큰 뼈대만 구현한 Source Code를 가지고 설명을 드리고자 합니다.
 
 Cryptoki 는 동적 Library(Linux에서는 Shared Library, Windows에는 Dynamic Linking Library로 부름) 형태로 제공되므로, 이 동적 Library를 사용하는 개념을 먼저 살펴보고자 합니다. 개념은, Library를 먼저 Load 한 후, Library속에 있는 Function의 address를 얻은 후에, 그 Function의 address로 call하는 방식입니다.&#x20;
 
