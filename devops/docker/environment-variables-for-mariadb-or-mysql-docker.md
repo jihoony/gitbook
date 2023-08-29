@@ -13,7 +13,7 @@
 
 {% code overflow="wrap" %}
 ```bash
-$ docker run -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=my-database -e MYSQL_USER=my-user -e MYSQL_PASSWORD=my-password --name mysql-latest -p 13306:3306 -d mysql:latest
+$ docker run -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=my-database -e MYSQL_USER=my-user -e MYSQL_PASSWORD=my-password -e TZ=Asia/Seoul --name mysql-latest -p 13306:3306 -d mysql:latest
 ```
 {% endcode %}
 
