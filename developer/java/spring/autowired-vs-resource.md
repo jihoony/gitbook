@@ -6,3 +6,7 @@
 
 * `@Autowired`는 필드의 **타입**을 기준으로 빈을 찾는다.
 * `@Resource`는 필드의 **이름**을 기준으로 빈을 찾는다.
+
+
+
+{% embed url="https://www.baeldung.com/spring-annotations-resource-inject-autowire" %}

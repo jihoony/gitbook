@@ -68,4 +68,4 @@ Rows
 
 ## Reference
 
-https://dataedo.com/kb/query/mysql/list-database-sessions
+{% embed url="https://dataedo.com/kb/query/mysql/list-database-sessions" %}

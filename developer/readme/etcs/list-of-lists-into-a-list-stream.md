@@ -12,7 +12,9 @@ Use `FlatMap` to flatten the internal lists into a single Stream, and the collec
 
 ```java
 List<List<Object>> list = .....
-List<Object> flat = list.stream().flatMap(List::stream).collect(Collectors.toList());
+List<Object> flat = list.stream()
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
 ```
 
 
