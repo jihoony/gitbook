@@ -17,4 +17,7 @@ Therefore, **a property defined in **_**application.properties**_** and placed i
 
 {% embed url="https://www.baeldung.com/spring-properties-file-outside-jar" %}
 
+{% embed url="https://www.baeldung.com/properties-with-spring" %}
+
 {% embed url="https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#appendix.application-properties" %}
+
