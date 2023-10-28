@@ -21,6 +21,8 @@
       * [Autowired @Value field in Spring with Mockito](developer/java/spring/mockito/autowired-value-field-in-spring-with-mockito.md)
     * [SpringBoot Hybernate application.yml](developer/readme/spring/springboot-hybernate-application.yml.md)
     * [ReflectionTestUtils](developer/readme/spring/reflectiontestutils.md)
+    * [Spring Properties File Outside jar](developer/readme/spring/spring-properties-file-outside-jar.md)
+    * [Spring boot Reference Documenation](developer/readme/spring/spring-boot-reference-documenation.md)
   * [Etcs](developer/java/etcs/README.md)
     * [BigDecimal 사용시 주의 사항](developer/java/etcs/bigdecimal.md)
     * [static factory methods common naming conventions](developer/java/etcs/static-factory-methods-common-naming-conventions.md)
