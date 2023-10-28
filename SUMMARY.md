@@ -22,7 +22,7 @@
     * [SpringBoot Hybernate application.yml](developer/readme/spring/springboot-hybernate-application.yml.md)
     * [ReflectionTestUtils](developer/readme/spring/reflectiontestutils.md)
     * [Spring Properties File Outside jar](developer/readme/spring/spring-properties-file-outside-jar.md)
-    * [Spring boot Reference Documenation](developer/readme/spring/spring-boot-reference-documenation.md)
+    * [Spring boot Reference Documentation](developer/readme/spring/spring-boot-reference-documentation.md)
   * [Etcs](developer/java/etcs/README.md)
     * [BigDecimal 사용시 주의 사항](developer/java/etcs/bigdecimal.md)
     * [static factory methods common naming conventions](developer/java/etcs/static-factory-methods-common-naming-conventions.md)
