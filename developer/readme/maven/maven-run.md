@@ -42,3 +42,5 @@ mvn spring-boot:run
 
 
 {% embed url="https://www.baeldung.com/maven-java-main-method" %}
+
+{% embed url="https://www.baeldung.com/executable-jar-with-maven" %}
