@@ -36,3 +36,9 @@ run maven command
 ```bash
 mvn spring-boot:run
 ```
+
+
+
+
+
+{% embed url="https://www.baeldung.com/maven-java-main-method" %}
