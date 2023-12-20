@@ -346,3 +346,10 @@ assertEquals(200, httpResponse.getStatusLine().getStatusCode());
 This article introduced WireMock and how to set up as well as configure this library for testing of REST APIs using various techniques, including matching of URL, request headers and body.
 
 The implementation of all the examples and code snippets can be found in [the GitHub project](https://github.com/eugenp/tutorials/tree/master/testing-modules/rest-testing).
+
+
+
+
+
+{% embed url="https://www.baeldung.com/introduction-to-wiremock" %}
+
