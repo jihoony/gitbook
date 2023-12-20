@@ -7,6 +7,7 @@
 * [Java](<README (1).md>)
   * [JUnit](developer/java/junit/README.md)
     * [Parameterized Test](developer/java/junit/parameterized-test.md)
+    * [Introduction to WireMock](developer/readme/junit/introduction-to-wiremock.md)
   * [Maven](developer/java/maven/README.md)
     * [Resource Reader and Writer](developer/java/maven/resource-reader-and-writer.md)
     * [JUnit with Maven](developer/readme/maven/junit-with-maven.md)
