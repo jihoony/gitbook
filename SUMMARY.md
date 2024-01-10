@@ -25,7 +25,7 @@
     * [ReflectionTestUtils](developer/readme/spring/reflectiontestutils.md)
     * [Spring Properties File Outside jar](developer/readme/spring/spring-properties-file-outside-jar.md)
     * [Spring @RequestParam Annotation](developer/readme/spring/spring-requestparam-annotation.md)
-    * [Baeldung](developer/readme/spring/baeldung.md)
+    * [Passing JVM Options from Gradle bootRun](developer/readme/spring/passing-jvm-options-from-gradle-bootrun.md)
   * [Etcs](developer/java/etcs/README.md)
     * [BigDecimal 사용시 주의 사항](developer/java/etcs/bigdecimal.md)
     * [static factory methods common naming conventions](developer/java/etcs/static-factory-methods-common-naming-conventions.md)
