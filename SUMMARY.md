@@ -56,6 +56,7 @@
   * [사용법, tip 정리](developer/cryptography/tip.md)
   * [OpenSSL](developer/cryptography/openssl/README.md)
     * [OpenSSL guide](developer/cryptography/openssl/openssl-guide.md)
+    * [Openssl RSA Private Key Encrypt](developer/cryptography/openssl/openssl-rsa-private-key-encrypt.md)
 * [PKCS#11 API](developer/pkcs-11-api/README.md)
   * [PKCS#11 API-강좌1](developer/pkcs-11-api/pkcs-11-api-1.md)
   * [PKCS#11 API-강좌2](developer/pkcs-11-api/pkcs-11-api-2.md)
