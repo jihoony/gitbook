@@ -212,3 +212,7 @@ First, we studied a few key concepts around public-key cryptography. Then we saw
 Finally, we explored the BouncyCastle library and discovered it’s a good alternative, since it provides a few advantages compared to the pure Java implementation.
 
 The full source code for both the [Java](https://github.com/eugenp/tutorials/tree/master/core-java-modules/core-java-security-2) and [BouncyCastle](https://github.com/eugenp/tutorials/tree/master/libraries-security) approaches is available over on GitHub.
+
+
+
+{% embed url="https://www.baeldung.com/java-read-pem-file-keys" %}
