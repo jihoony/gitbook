@@ -86,6 +86,7 @@
   * [Serverless Architecture](devops/cloud/serverless-architecture.md)
   * [AWS](devops/cloud/aws/README.md)
     * [AWS 주요 자습서 Link](devops/cloud/aws/aws-link.md)
+    * [Diagram-as-code for AWS architecture.](devops/cloud/aws/diagram-as-code-for-aws-architecture..md)
   * [Install MariaDB Galera by Helm](devops/cloud/install-mariadb-galera-by-helm.md)
 * [VM](devops/vm/README.md)
   * [vagrant를 사용한 vm 설치 방법](devops/vm/vagrant-vm.md)
