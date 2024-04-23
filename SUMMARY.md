@@ -87,6 +87,7 @@
   * [AWS](devops/cloud/aws/README.md)
     * [AWS 주요 자습서 Link](devops/cloud/aws/aws-link.md)
     * [Diagram-as-code for AWS architecture.](devops/cloud/aws/diagram-as-code-for-aws-architecture..md)
+    * [AWS Architecture icon](https://aws.amazon.com/ko/architecture/icons/)
   * [Install MariaDB Galera by Helm](devops/cloud/install-mariadb-galera-by-helm.md)
 * [VM](devops/vm/README.md)
   * [vagrant를 사용한 vm 설치 방법](devops/vm/vagrant-vm.md)
