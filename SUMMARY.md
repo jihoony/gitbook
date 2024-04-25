@@ -51,6 +51,7 @@
   * [How to get memory usage at runtime using C++?](developer/c-c++/how-to-get-memory-usage-at-runtime-using-c++.md)
   * [How to get time in milliseconds using C++ on Linux?](developer/c-c++/how-to-get-time-in-milliseconds-using-c++-on-linux.md)
   * [Sleep Functions in C++](developer/c-c++/sleep-functions-in-c++.md)
+  * [Calculate Cpu Usage on Linux as Top](developer/c-c++/calculate-cpu-usage-on-linux-as-top.md)
 * [CryptoGraphy](developer/cryptography/README.md)
   * [인증 기관(CA;Certificate Authority) 구성하고 인증서 발급하기](developer/cryptography/ca-certificate-authority.md)
   * [KeyTool Import PrivateKey, Certificate](developer/cryptography/keytool-import-privatekey-certificate.md)
