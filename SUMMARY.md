@@ -41,6 +41,7 @@
   * [MariaDB-Galera](developer/mysql/mariadb-galera.md)
   * [FOUND\_ROWS](developer/mysql/found\_rows.md)
   * [MySQL Group Replication Requirements](developer/mysql/mysql-group-replication-requirements.md)
+  * [Data Types Explicit Default Handling](developer/mysql/data-types-explicit-default-handling.md)
 * [C/C++](developer/c-c++/README.md)
   * [Autotool 사용법](developer/c-c++/autotool.md)
   * [Intruduction to GNU Autotools](developer/c-c++/intruduction-to-gnu-autotools.md)
