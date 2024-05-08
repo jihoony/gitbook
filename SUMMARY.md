@@ -28,6 +28,7 @@
     * [Passing JVM Options from Gradle bootRun](developer/readme/spring/passing-jvm-options-from-gradle-bootrun.md)
     * [Securing Spring Boot API With API Key and Secret](developer/readme/spring/securing-spring-boot-api-with-api-key-and-secret.md)
     * [Why Is Field Injection Not Recommended?](developer/readme/spring/why-is-field-injection-not-recommended.md)
+    * [An Overview of Identifiers in Hibernate/JPA](developer/readme/spring/an-overview-of-identifiers-in-hibernate-jpa.md)
   * [Etcs](developer/java/etcs/README.md)
     * [BigDecimal 사용시 주의 사항](developer/java/etcs/bigdecimal.md)
     * [static factory methods common naming conventions](developer/java/etcs/static-factory-methods-common-naming-conventions.md)
