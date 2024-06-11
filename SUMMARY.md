@@ -97,6 +97,7 @@
     * [Diagram-as-code for AWS architecture.](devops/cloud/aws/diagram-as-code-for-aws-architecture..md)
     * [AWS Architecture icon](https://aws.amazon.com/ko/architecture/icons/)
   * [Install MariaDB Galera by Helm](devops/cloud/install-mariadb-galera-by-helm.md)
+  * [Jenkinsfile VIM syntax highlighting](devops/cloud/jenkinsfile-vim-syntax-highlighting.md)
 * [VM](devops/vm/README.md)
   * [vagrant를 사용한 vm 설치 방법](devops/vm/vagrant-vm.md)
 * [Etcs](devops/etcs/README.md)
