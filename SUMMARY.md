@@ -25,6 +25,7 @@
     * [ReflectionTestUtils](developer/readme/spring/reflectiontestutils.md)
     * [Spring Properties File Outside jar](developer/readme/spring/spring-properties-file-outside-jar.md)
     * [Spring @RequestParam Annotation](developer/readme/spring/spring-requestparam-annotation.md)
+    * [Properties with Spring and Spring Boot](developer/readme/spring/properties-with-spring-and-spring-boot.md)
     * [Passing JVM Options from Gradle bootRun](developer/readme/spring/passing-jvm-options-from-gradle-bootrun.md)
     * [Securing Spring Boot API With API Key and Secret](developer/readme/spring/securing-spring-boot-api-with-api-key-and-secret.md)
     * [Why Is Field Injection Not Recommended?](developer/readme/spring/why-is-field-injection-not-recommended.md)
