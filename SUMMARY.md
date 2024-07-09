@@ -91,6 +91,7 @@
   * [Container Technology, Docker](devops/docker/container-technology-docker.md)
   * [Docker Trouble Shooting](devops/docker/docker-trouble-shooting.md)
   * [Docker BuildKit](devops/docker/docker-buildkit.md)
+  * [How to clear Docker cache and free up space on your system](devops/docker/how-to-clear-docker-cache-and-free-up-space-on-your-system.md)
 * [Cloud](devops/cloud/README.md)
   * [Serverless Architecture](devops/cloud/serverless-architecture.md)
   * [AWS](devops/cloud/aws/README.md)
