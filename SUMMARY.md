@@ -83,6 +83,7 @@
 * [OpenSSL Document](openssl/openssl-document/README.md)
   * [openssl-req](openssl/openssl-document/openssl-req.md)
   * [x509v3\_config](openssl/openssl-document/x509v3\_config.md)
+* [Creating a Self-Signed Certificate With OpenSSL](openssl/creating-a-self-signed-certificate-with-openssl.md)
 
 ## DevOps
 
