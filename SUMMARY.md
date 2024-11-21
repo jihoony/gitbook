@@ -101,6 +101,7 @@
     * [AWS Architecture icon](https://aws.amazon.com/ko/architecture/icons/)
   * [Install MariaDB Galera by Helm](devops/cloud/install-mariadb-galera-by-helm.md)
   * [Jenkinsfile VIM syntax highlighting](devops/cloud/jenkinsfile-vim-syntax-highlighting.md)
+  * [Cloud Development Kit for Kubernetes](devops/cloud/cloud-development-kit-for-kubernetes.md)
 * [VM](devops/vm/README.md)
   * [vagrant를 사용한 vm 설치 방법](devops/vm/vagrant-vm.md)
 * [Etcs](devops/etcs/README.md)
