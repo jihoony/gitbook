@@ -28,9 +28,8 @@ root@96c336b21c00:/#
 
 #### 1-2. En/Decrypt
 
-**1-2-1. Encrypt**
+Data
 
-{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# cat sample.xml
 <?xml version="1.0" ?>
@@ -52,6 +51,12 @@ root@96c336b21c00:/# cat sample.xml
 		<ViewerPreferences.fontSize>13</ViewerPreferences.fontSize>
 	</preferences>
 </configuration>
+```
+
+**1-2-1. Encrypt**
+
+{% code overflow="wrap" fullWidth="false" %}
+```bash
 root@96c336b21c00:/# openssl enc -aes-256-cbc -K 1959c51ea294412b8bb238a446e9d4be744cf91c54f045c9caf8fe433dba1e01  -iv 302775dfc35a35c8081bbc6fdeacbd86 -a -e -in sample.xml -out result.enc
 root@aabc2ffe1c3e:/# cat result.enc | base64
 YVVUQ1JFSnJkdkNzZk9xSlBPMWZicU41OUZXMGFqMUt3WnhacGplQkVweHIwdU9FTUtidEZlZXky
@@ -341,12 +346,17 @@ Certificate:
 
 **2-1-2. En/Decrypt and Sign/Verify**
 
+**Data**
+
+```bash
+root@96c336b21c00:/# cat sample.txt
+hello world
+```
+
 **2-1-2-1. Public Key Encrypt**
 
 {% code overflow="wrap" fullWidth="false" %}
 ```bash
-root@96c336b21c00:/# cat sample.txt
-hello world
 root@96c336b21c00:/# openssl rsautl -encrypt -inkey rsa_2048_pub.key -pubin -in sample.xml -out result.enc
 The command rsautl was deprecated in version 3.0. Use 'pkeyutl' instead.
 root@96c336b21c00:/# cat result.enc |base64
