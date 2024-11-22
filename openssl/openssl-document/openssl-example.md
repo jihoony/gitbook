@@ -6,26 +6,31 @@
 
 #### 1-1. Generate Key
 
-**Generate 128-size Key**
+**1-1-1. Generate 128-size Key**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# head /dev/urandom | sha1sum
 d10a5143d6ecdafd57af383760ddea5dc6f6d2d9  -
 root@96c336b21c00:/#
 ```
+{% endcode %}
 
-**Generate 256-size Key**
+**1-1-2. Generate 256-size Key**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# head /dev/urandom | sha256sum
 7e12003b50ef320480cfcc7f92a73e830f1dfb3054f6df732c0733e04138d271  -
 root@96c336b21c00:/#
 ```
+{% endcode %}
 
 #### 1-2. En/Decrypt
 
-**Encrypt**
+**1-2-1. Encrypt**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# cat sample.xml
 <?xml version="1.0" ?>
@@ -38,34 +43,76 @@ root@96c336b21c00:/# cat sample.xml
 		</mainWindow>
 		<lookAndFeel>com.apple.laf.AquaLookAndFeel</lookAndFeel>
 	</gui>
-	<recentFilePaths>
-		<filePath>/Users/jihoonyang/Desktop/nCipher/rsaprivenc.jar</filePath>
-		<filePath>/Users/jihoonyang/Desktop/nCipher/nCipherKM.jar</filePath>
-		<filePath>/Users/jihoonyang/Desktop/nCipher/keysafe.jar</filePath>
-		<filePath>/Users/jihoonyang/Desktop/nCipher/jcetools.jar</filePath>
-		<filePath>/Users/jihoonyang/Desktop/nCipher/nfjava.jar</filePath>
-		<filePath>/Users/jihoonyang/Desktop/nCipher/kmjava.jar</filePath>
-		<filePath>/Users/jihoonyang/Desktop/nCipher/jutils.jar</filePath>
-	</recentFilePaths>
-	<recentDirectories>
-		<loadPath>/Users/jihoonyang</loadPath>
-		<savePath>/Users/jihoonyang</savePath>
-	</recentDirectories>
+	
+	... 
+	
 	<preferences>
 		<JdGuiPreferences.errorBackgroundColor>0xFF6666</JdGuiPreferences.errorBackgroundColor>
 		<JdGuiPreferences.jdCoreVersion>1.1.3</JdGuiPreferences.jdCoreVersion>
 		<ViewerPreferences.fontSize>13</ViewerPreferences.fontSize>
 	</preferences>
 </configuration>
-root@96c336b21c00:/# openssl enc -aes-256-cbc -K 
-1959c51ea294412b8bb238a446e9d4be744cf91c54f045c9caf8fe433dba1e01  -iv 302775dfc35a35c8081bbc6fdeacbd86 -a -e -in sample.xml -out result.enc
+root@96c336b21c00:/# openssl enc -aes-256-cbc -K 1959c51ea294412b8bb238a446e9d4be744cf91c54f045c9caf8fe433dba1e01  -iv 302775dfc35a35c8081bbc6fdeacbd86 -a -e -in sample.xml -out result.enc
+root@aabc2ffe1c3e:/# cat result.enc | base64
+YVVUQ1JFSnJkdkNzZk9xSlBPMWZicU41OUZXMGFqMUt3WnhacGplQkVweHIwdU9FTUtidEZlZXky
+b0Z2VkdCWQorYVFMYUtGR0Njc0Z3NGZDQlZKYStoTGVZTTg3NzZWOFhvZ2NCM092SUlFanpNUlFl
+N3VMWjY0VGp2alNrbS8xCklnK1JxeDRONEJqMkNEY3J0SWlmM0pkdXFYN3NZemJXV3JCV3h2Nnk5
+VEVUSjlLU2psY2VsaUxKYnFrMWtqSzkKMkVyeWdoZTR5Q0x5a3U5dXRCL0lRRUZiaW9aaFM4QWRK
+cGwvZnd2ZDhzSU83Sm5YeE9hN2dUTHpQRitpZWlONgpoQkV3SFR4Y3FwV1B1b3dmdnhreW1EMHNP
+THFBK0RuV3g1emlOYS9uV1YyREM1eEFyci9rbUpJcDVXYmx0ZnBBCkk4aXNnczhVdmdOQk9tRllt
+YXExNVBWbDV1WURkelloS3VqNWw5ZGhyUWpOMERhUEN4Nkh1L0RmaCsrVHZJUHYKM3B2aEFtNWJv
+QXdXYzZxUUp0RURkdEtCTFIrdjdPUWN1QlJhMUxYbVUxejRrbnNORHFtSHVwRDd3c1NNdm9oNgpv
+clI1Z1JrZzRIbWNBL3FRQ2JBeFlKSHo5aTdmVzhXeFF1cU5NNTRiM0tYTFR1Y0x2bFBUZzV4UE92
+eUJsYXRVCmdnMExPZDhTb2xVeWppZHhCUitMNHZYcHV5ell1VG13UmpyeXNIakVjWThYS0JFYnJG
+Ny9KL20yejJBTWpBRmMKVHErenFibUFXaTB3VHVnZVlGRVp6dS9HMlpQQUJCZXdPZVVtUlIrUW9y
+bHB2anpraUhYUmYzZ0MzS2dIU0lKcgpvcXd3YXp5c0RIWnB4RmNpcEQyUWsrQVFuTnBOM0xqdkpK
+R0g1VEF6T1VSVVFIZjRCRC9RODg1c1o2cy9ZNjRRCnNhdnNmT0pDWjg1Um9hUko0MXY2V1V2NHk1
+TU12WUkvclFlUk1haHk4MnlZN3Q1ZDJNRStLV3IrRmp2WmRON3EKaUV4RkdWMEtIeVNQTG5FRnlM
+MXFQdWVYZ0dzb08zUDVYVG5ZZkdSZzVTRlJuRjJncWlEMENwV2YrejJaWEtleApXKzlDMTZqRURm
+UWZDNFRsMVZnbUZ4K0VJNjNlU3k0dG1hWjVldXFLclBJU2hCbnpTczg0QjNUUGNyRllBNmtVCjlw
+T0dTVDU5WG9LZ2lxd0JNS0hlTjhXRjlqRDN4NVhkU0p3ZW02d2RUZUJxVHR3T0ZtNDFPNzI2M1JZ
+SC9BUHkKSEgzVDk0UEZxVklIMEZDWitDY3U2MEIzd25mbDJYamhVU1U1TkdTT1J4aWlweFcvRzRp
+ekdXaHBzREErSWE0Tgp2aFA2RmJweEp0UUZuQ2lYRjBQNlFyTUpDQ0lvcHJYV2U3UmV3dHUrU1Rl
+N3RtTUFZcUdod0w0RjR0N2NSY0hnCkVveHArOFhPc210TUpqWjRKZDdiWGxZOUtQMGhiam56TURm
+ZTVLdnZ2UVROc2U5Z1Z4WWdzWkVOOG55OU9QZkUKNkFTNjlsaHNDVlFWa1psaERYZU5zUm5DUXpC
+UXVvNU9vZ0xoYmp6RzBmanZrQmZNUGVsd0pQek9pZnNkdVU1bApvZlRMQmhER0IvZHYrLyt2bGM2
+M3psT2FiRW9WN3VLQkNpTjFlTzFsdnFQd0tXMmhpRDBHczJYejg4Y2lpRG0vCitMSGNBcVo0R3Uw
+WmN3dFFneEo2cmwzWDRqcnN6Vkg3QTlhc2hMRklMSEtPY3psMFhBMGtyM1lWeEZtWFZscU0KdWgx
+NGQwWXhTM1lLckF4S3BvVlB3SnFkN2RHakFCSEFid3lNWFZTRWwySzhralk4eXJHV3UzVzd4Q0pG
+R01YdApiM0dUVUdzUkNLV2U5MlUxUEpzb3ZieVRnUkxEUVpkMXA1OE5uYlZlSDFVWFZEVDkxbUd6
+bnpKSnFxbkFNQU9NCm9ic1kxNFc5d2tzbzJJMW9oODQxSXZseUJycFNXWEI5MmRWNFZCdWN1Smha
+dDIyWERFbVZ2Yy8ydzZCMm5JYWUKaWRUSmtGSUNGbFArTHlKK3VZMUJoYUFiaXJzcDRrQVphc1pH
+NEYxZkhlVT0K
 ```
+{% endcode %}
 
-**Decrypt**
+**1-2-2. Decrypt**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
-root@96c336b21c00:/# openssl enc -aes-256-cbc -K 1959c51ea294412b8bb238a446e9d4be744cf91c54f045c9caf8fe433dba1e01  -iv 302775dfc35a35c8081bbc6fdeacbd86 -a -d -in result.en
+root@aabc2ffe1c3e:/# openssl enc -aes-256-cbc -K 1959c51ea294412b8bb238a446e9d4be744cf91c54f045c9caf8fe433dba1e01  -iv 302775dfc35a35c8081bbc6fdeacbd86 -a -d -in result.enc -out plain.xml
+root@aabc2ffe1c3e:/# cat plain.xml
+<?xml version="1.0" ?>
+<configuration>
+	<gui>
+		<mainWindow>
+			<location x="0" y="25"></location>
+			<size w="1860" h="1132"></size>
+			<maximize>true</maximize>
+		</mainWindow>
+		<lookAndFeel>com.apple.laf.AquaLookAndFeel</lookAndFeel>
+	</gui>
+	
+	...
+	
+	<preferences>
+		<JdGuiPreferences.errorBackgroundColor>0xFF6666</JdGuiPreferences.errorBackgroundColor>
+		<JdGuiPreferences.jdCoreVersion>1.1.3</JdGuiPreferences.jdCoreVersion>
+		<ViewerPreferences.fontSize>13</ViewerPreferences.fontSize>
+	</preferences>
+</configuration>
 ```
+{% endcode %}
 
 ### 2. Asymmetric Key
 
@@ -73,8 +120,9 @@ root@96c336b21c00:/# openssl enc -aes-256-cbc -K 1959c51ea294412b8bb238a446e9d4b
 
 **2-1-1. Generate Key Pair**
 
-**Generate Private Key**
+**2-1-1-1. Generate Private Key**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# openssl genrsa -out rsa_2048_pri.key 2048
 root@96c336b21c00:/# cat rsa_2048_pri.key
@@ -145,9 +193,11 @@ coefficient:
     c4:e2:d5:cd:29:21:e1:21:ee:65:7d:27:74:86:1c:
     b7:9b:33:c2:1b:a1:ef:90    
 ```
+{% endcode %}
 
-**Generate Public Key**
+**2-1-1-2. Generate Public Key**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# openssl rsa -in rsa_2048_pri.key -pubout -out rsa_2048_pub.key
 writing RSA key
@@ -184,9 +234,11 @@ Modulus:
     20:19
 Exponent: 65537 (0x10001)
 ```
+{% endcode %}
 
-**Generate Self-Signed Cert**
+**2-1-1-3. Generate Self-Signed Cert**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# openssl req -new -x509 -key rsa_2048_pri.key -out rsa-cert.pem -days 365
 You are about to be asked to enter information that will be incorporated
@@ -285,11 +337,13 @@ Certificate:
         5f:6d:5b:9f:51:41:2e:d9:4d:b7:e1:91:8f:77:1d:d5:34:ca:
         00:b7:49:5b
 ```
+{% endcode %}
 
 **2-1-2. En/Decrypt and Sign/Verify**
 
-**Public Key Encrypt**
+**2-1-2-1. Public Key Encrypt**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# cat sample.txt
 hello world
@@ -302,18 +356,22 @@ ya81GO8YShfAZ4tac4i8cqmsIRf96qYC5Btys/NoqvhDalkT/ldRQ4m9jwGFMMNrPJwbR4P2MwVW
 cSHQsqc0vbAILgu/bpEV9CWJv1xH4MPymoopSpHTQEx6+BbHbTcVb03F9nfut/33xbFiw1Lrc6vf
 NKyHofqu7Pxj8LemxuA+JdLOVnwbbGUIL/Eldw==
 ```
+{% endcode %}
 
-**Private Key Decrypt**
+**2-1-2-2. Private Key Decrypt**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# openssl rsautl -decrypt -inkey rsa_2048_pri.key -in result.enc -out plain.txt
 The command rsautl was deprecated in version 3.0. Use 'pkeyutl' instead.
 root@96c336b21c00:/# cat plain.txt
 hello world
 ```
+{% endcode %}
 
-**Private Key Sign**
+**2-1-2-3. Private Key Sign**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# openssl dgst -sha256 -sign rsa_2048_pri.key -out sha256.sign sample.xml
 root@96c336b21c00:/# cat sha256.sign | base64
@@ -323,20 +381,24 @@ xBk2wssJJY6yYesmspIdpGGwaoep+L3HsYdk0J2qi9VQNDt1PxbusB3x2+FR8yxNIcG/xWMf/3hh
 93cEml0ym17b5y19hFmz5HMghS7uk24esL1o4BzZUPBUUbZpEp1uzkQxT3jeo+J+RASRqB5T5xIS
 HSrnnDCUQavsurq9Acw33MQuUXPx2EFWS8U1Gw==
 ```
+{% endcode %}
 
-**Public Key Verify**
+**2-1-2-4. Public Key Verify**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# openssl dgst -sha256 -verify rsa_2048_pub.key -signature sha256.sign sample.xml
 Verified OK
 ```
+{% endcode %}
 
 #### 2-2. EC
 
 **2-2-1. Generate Key Pair**
 
-**Generate Private Key**
+**2-2-1-1. Generate Private Key**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# openssl ecparam -name prime256v1 -genkey -noout -out ec-private-key.pem
 root@96c336b21c00:/# cat ec-private-key.pem
@@ -361,9 +423,11 @@ pub:
 ASN1 OID: prime256v1
 NIST CURVE: P-256
 ```
+{% endcode %}
 
-**Generate Public Key**
+**2-2-1-2. Generate Public Key**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# openssl ec -in ec-private-key.pem -pubout -out ec-public-key.pem
 read EC key
@@ -385,9 +449,11 @@ pub:
 ASN1 OID: prime256v1
 NIST CURVE: P-256
 ```
+{% endcode %}
 
-**Generate Self-Signed Cert**
+**2-2-1-2. Generate Self-Signed Cert**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# openssl req -new -x509 -key ec-private-key.pem -out ec-cert.pem -days 365
 You are about to be asked to enter information that will be incorporated
@@ -455,40 +521,45 @@ Certificate:
         2c:02:21:00:ff:20:ca:d7:77:c9:79:4d:08:35:b6:da:02:c4:
         c0:c1:9c:4b:6b:3a:17:3e:c2:8b:23:30:2a:a0:d6:a4:be:fb
 ```
+{% endcode %}
 
 **2-2-2. Sign/Verify**
 
-**Private Key Sign**
+**2-2-2-1. Private Key Sign**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# openssl dgst -sha256 -sign ec-private-key.pem -out ec-sha256.sign sample.xml
 root@96c336b21c00:/# cat ec-sha256.sign | base64
 MEUCIFHhUOPDC0l3ntkjX8ouEPfQGwbwacGCUesIGcFIvT81AiEA6wmTFZxZLnniy9IEpodyrhJe
 pSdvZHv9VLro2Y1MYd0=
 ```
+{% endcode %}
 
-**Private Key Verify**
+**2-2-2-2. Private Key Verify**
 
+{% code overflow="wrap" fullWidth="true" %}
 ```bash
 root@96c336b21c00:/# openssl dgst -sha256 -verify ec-public-key.pem -signature ec-sha256.sign sample.xml
 Verified OK
 ```
+{% endcode %}
 
 ## Reference
 
 * Symmetric cipher commands
-  * https://docs.openssl.org/1.1.1/man1/enc/
+  * [https://docs.openssl.org/1.1.1/man1/enc/](https://docs.openssl.org/1.1.1/man1/enc/)
 * Genarates an RSA private key
-  * https://docs.openssl.org/1.1.1/man1/genrsa/
+  * [https://docs.openssl.org/1.1.1/man1/genrsa/](https://docs.openssl.org/1.1.1/man1/genrsa/)
 * Processes RSA Keys
-  * https://docs.openssl.org/1.1.1/man1/rsa/
+  * [https://docs.openssl.org/1.1.1/man1/rsa/](https://docs.openssl.org/1.1.1/man1/rsa/)
 * Processes EC Keys
-  * https://docs.openssl.org/1.1.1/man1/ec/
+  * [https://docs.openssl.org/1.1.1/man1/ec/](https://docs.openssl.org/1.1.1/man1/ec/)
 * Manipulate or Generate EC parameter files
-  * https://docs.openssl.org/1.1.1/man1/ecparam/
+  * [https://docs.openssl.org/1.1.1/man1/ecparam/](https://docs.openssl.org/1.1.1/man1/ecparam/)
 * Creates and processes certificate requests in PKCS#10 format
-  * https://docs.openssl.org/1.1.1/man1/req/
+  * [https://docs.openssl.org/1.1.1/man1/req/](https://docs.openssl.org/1.1.1/man1/req/)
 * Message digest
-  * https://docs.openssl.org/1.1.1/man1/dgst/
+  * [https://docs.openssl.org/1.1.1/man1/dgst/](https://docs.openssl.org/1.1.1/man1/dgst/)
 * Sign, Verify, Encrypt and Decrypt data using the RSA algorithm
-  * https://docs.openssl.org/1.1.1/man1/rsautl/
+  * [https://docs.openssl.org/1.1.1/man1/rsautl/](https://docs.openssl.org/1.1.1/man1/rsautl/)
