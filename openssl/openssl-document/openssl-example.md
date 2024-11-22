@@ -30,8 +30,8 @@ root@96c336b21c00:/#
 
 Data
 
-```bash
-root@96c336b21c00:/# cat sample.xml
+{% code title="sample.xml" overflow="wrap" %}
+```xml
 <?xml version="1.0" ?>
 <configuration>
 	<gui>
@@ -52,6 +52,7 @@ root@96c336b21c00:/# cat sample.xml
 	</preferences>
 </configuration>
 ```
+{% endcode %}
 
 **1-2-1. Encrypt**
 
@@ -348,10 +349,11 @@ Certificate:
 
 **Data**
 
-```bash
-root@96c336b21c00:/# cat sample.txt
+{% code title="sample.txt" %}
+```
 hello world
 ```
+{% endcode %}
 
 **2-1-2-1. Public Key Encrypt**
 
