@@ -8,7 +8,7 @@
 
 **1-1-1. Generate 128-size Key**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# head /dev/urandom | sha1sum
 d10a5143d6ecdafd57af383760ddea5dc6f6d2d9  -
@@ -18,7 +18,7 @@ root@96c336b21c00:/#
 
 **1-1-2. Generate 256-size Key**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# head /dev/urandom | sha256sum
 7e12003b50ef320480cfcc7f92a73e830f1dfb3054f6df732c0733e04138d271  -
@@ -30,7 +30,7 @@ root@96c336b21c00:/#
 
 **1-2-1. Encrypt**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# cat sample.xml
 <?xml version="1.0" ?>
@@ -88,7 +88,7 @@ NEYxZkhlVT0K
 
 **1-2-2. Decrypt**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@aabc2ffe1c3e:/# openssl enc -aes-256-cbc -K 1959c51ea294412b8bb238a446e9d4be744cf91c54f045c9caf8fe433dba1e01  -iv 302775dfc35a35c8081bbc6fdeacbd86 -a -d -in result.enc -out plain.xml
 root@aabc2ffe1c3e:/# cat plain.xml
@@ -122,7 +122,7 @@ root@aabc2ffe1c3e:/# cat plain.xml
 
 **2-1-1-1. Generate Private Key**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# openssl genrsa -out rsa_2048_pri.key 2048
 root@96c336b21c00:/# cat rsa_2048_pri.key
@@ -197,7 +197,7 @@ coefficient:
 
 **2-1-1-2. Generate Public Key**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# openssl rsa -in rsa_2048_pri.key -pubout -out rsa_2048_pub.key
 writing RSA key
@@ -238,7 +238,7 @@ Exponent: 65537 (0x10001)
 
 **2-1-1-3. Generate Self-Signed Cert**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# openssl req -new -x509 -key rsa_2048_pri.key -out rsa-cert.pem -days 365
 You are about to be asked to enter information that will be incorporated
@@ -343,7 +343,7 @@ Certificate:
 
 **2-1-2-1. Public Key Encrypt**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# cat sample.txt
 hello world
@@ -360,7 +360,7 @@ NKyHofqu7Pxj8LemxuA+JdLOVnwbbGUIL/Eldw==
 
 **2-1-2-2. Private Key Decrypt**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# openssl rsautl -decrypt -inkey rsa_2048_pri.key -in result.enc -out plain.txt
 The command rsautl was deprecated in version 3.0. Use 'pkeyutl' instead.
@@ -371,7 +371,7 @@ hello world
 
 **2-1-2-3. Private Key Sign**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# openssl dgst -sha256 -sign rsa_2048_pri.key -out sha256.sign sample.xml
 root@96c336b21c00:/# cat sha256.sign | base64
@@ -385,7 +385,7 @@ HSrnnDCUQavsurq9Acw33MQuUXPx2EFWS8U1Gw==
 
 **2-1-2-4. Public Key Verify**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# openssl dgst -sha256 -verify rsa_2048_pub.key -signature sha256.sign sample.xml
 Verified OK
@@ -398,7 +398,7 @@ Verified OK
 
 **2-2-1-1. Generate Private Key**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# openssl ecparam -name prime256v1 -genkey -noout -out ec-private-key.pem
 root@96c336b21c00:/# cat ec-private-key.pem
@@ -427,7 +427,7 @@ NIST CURVE: P-256
 
 **2-2-1-2. Generate Public Key**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# openssl ec -in ec-private-key.pem -pubout -out ec-public-key.pem
 read EC key
@@ -453,7 +453,7 @@ NIST CURVE: P-256
 
 **2-2-1-2. Generate Self-Signed Cert**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# openssl req -new -x509 -key ec-private-key.pem -out ec-cert.pem -days 365
 You are about to be asked to enter information that will be incorporated
@@ -527,7 +527,7 @@ Certificate:
 
 **2-2-2-1. Private Key Sign**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# openssl dgst -sha256 -sign ec-private-key.pem -out ec-sha256.sign sample.xml
 root@96c336b21c00:/# cat ec-sha256.sign | base64
@@ -538,7 +538,7 @@ pSdvZHv9VLro2Y1MYd0=
 
 **2-2-2-2. Private Key Verify**
 
-{% code overflow="wrap" fullWidth="true" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 root@96c336b21c00:/# openssl dgst -sha256 -verify ec-public-key.pem -signature ec-sha256.sign sample.xml
 Verified OK
