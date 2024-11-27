@@ -10,7 +10,7 @@ In this tutorial, we’ll learn to pass the JVM arguments from the Gradle _bootR
 
 ### 2. Understanding _bootRun_ <a href="#bd-understanding-bootrun" id="bd-understanding-bootrun"></a>
 
-**Gradle **_**bootRun**_** is a gradle-specified task that comes with the default Spring Boot Gradle Plugin. It helps us to run the Spring Boot application from Gradle itself directly.** Executing the _bootRun_ command starts our application in a development environment, which is very useful for testing and development purposes. Primarily, it is used for iterative development as it doesn’t need any separate build or deployment purposes.
+**Gradle&#x20;**_**bootRun**_**&#x20;is a gradle-specified task that comes with the default Spring Boot Gradle Plugin. It helps us to run the Spring Boot application from Gradle itself directly.** Executing the _bootRun_ command starts our application in a development environment, which is very useful for testing and development purposes. Primarily, it is used for iterative development as it doesn’t need any separate build or deployment purposes.
 
 **In short, it provides a simplified way to build an application in a dev environment and execute tasks related to spring boot development.**
 
@@ -36,7 +36,7 @@ $ ps -ef | grep java | grep spring
 -Duser.language=en com.example.demo.DemoApplication
 ```
 
-In the above _bootRun_ task, we changed the _max_ and _min_ heap of the Spring Boot application using the _jvmArgs_ option. **This way, the JVM parameter will be attached to the Spring Boot application dynamically. Furthermore, we can also add customized properties to the **_**bootRun**_** using the **_**-D**_** option.** To demonstrate, let’s take a look at the _bootRun_ task:
+In the above _bootRun_ task, we changed the _max_ and _min_ heap of the Spring Boot application using the _jvmArgs_ option. **This way, the JVM parameter will be attached to the Spring Boot application dynamically. Furthermore, we can also add customized properties to the&#x20;**_**bootRun**_**&#x20;using the&#x20;**_**-D**_**&#x20;option.** To demonstrate, let’s take a look at the _bootRun_ task:
 
 ```
 bootRun {

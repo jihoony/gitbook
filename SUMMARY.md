@@ -109,7 +109,6 @@
   * [Cloud Development Kit for Kubernetes](devops/cloud/cloud-development-kit-for-kubernetes.md)
 * [VM](devops/vm/README.md)
   * [vagrant를 사용한 vm 설치 방법](devops/vm/vagrant-vm.md)
-  * [Ubuntu GUI via Vagrant](devops/vm/ubuntu-gui-via-vagrant.md)
 * [Etcs](devops/etcs/README.md)
   * [Logstash](devops/etcs/logstash/README.md)
     * [Installing Logstash](devops/etcs/logstash/installing-logstash.md)

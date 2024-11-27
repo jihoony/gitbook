@@ -164,7 +164,7 @@ This command primarily creates and processes certificate requests (CSRs) in PKCS
 
 
 
-**-keyout **_**filename**_
+**-keyout&#x20;**_**filename**_
 
 > This gives the filename to write any private key to that has been newly created or read from **-key**. If neither the **-keyout** option nor the **-key** option are given then the filename specified in the configuration file with the **default\_keyfile** option is used, if present. Thus, if you want to write the private key and the **-key** option is provided, you should provide the **-keyout** option explicitly. If a new key is generated and no filename is specified the key is written to standard output.
 

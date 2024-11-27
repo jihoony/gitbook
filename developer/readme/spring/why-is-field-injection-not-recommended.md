@@ -22,7 +22,7 @@ What’s more, even the [official Spring documentation](https://docs.spring.io/s
 
 ### 3. Null-Safety <a href="#bd-null-safety" id="bd-null-safety"></a>
 
-**Field injection creates a risk of **_**NullPointerException**_** if dependencies aren’t correctly initialized.**
+**Field injection creates a risk of&#x20;**_**NullPointerException**_**&#x20;if dependencies aren’t correctly initialized.**
 
 Let’s define the _EmailService_ class and add the _EmailValidator_ dependency using the field injection:
 
@@ -46,7 +46,7 @@ public void process(String email) {
 }
 ```
 
-The _EmailService_ works properly only if we provide the _EmailValidator_ dependency. **However, using the field injection, we didn’t provide a direct way of instantiating the **_**EmailService**_** with required dependencies.**
+The _EmailService_ works properly only if we provide the _EmailValidator_ dependency. **However, using the field injection, we didn’t provide a direct way of instantiating the&#x20;**_**EmailService**_**&#x20;with required dependencies.**
 
 Moreover, we are able to create the _EmailService_ instance using the default constructor:
 
@@ -57,7 +57,7 @@ emailService.process("[email protected]");
 
 Executing the code above would cause _NullPointerException_ since we didn’t provide its mandatory dependency, _EmailValidator_.
 
-Now, we can **reduce the risk of **_**NullPointerException**_** using the constructor injection**:
+Now, we can **reduce the risk of&#x20;**_**NullPointerException**_**&#x20;using the constructor injection**:
 
 ```
 private final EmailValidator emailValidator;
@@ -113,7 +113,7 @@ public class DependencyB {
 }
 ```
 
-**Since the dependencies are injected when needed and not on the context load, Spring won’t throw **_**BeanCurrentlyInCreationException**_**.**
+**Since the dependencies are injected when needed and not on the context load, Spring won’t throw&#x20;**_**BeanCurrentlyInCreationException**_**.**
 
 With constructor injection, it’s possible to detect circular dependencies at compile time since they would create unresolvable errors.
 

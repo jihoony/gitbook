@@ -9,7 +9,7 @@ By convention, Spring Boot looks for an externalized configuration file — _app
 * A classpath _/config_ package
 * The classpath root
 
-Therefore, **a property defined in **_**application.properties**_** and placed in the **_**/config**_** subdirectory of the current directory will be loaded.** This will also override properties in other locations in case of a collision.
+Therefore, **a property defined in&#x20;**_**application.properties**_**&#x20;and placed in the&#x20;**_**/config**_**&#x20;subdirectory of the current directory will be loaded.** This will also override properties in other locations in case of a collision.
 
 
 

@@ -86,7 +86,7 @@ Here, we check whether the request contains the API Key header with a secret or 
 
 #### 3.3. Extending _AbstractAuthenticationToken_ <a href="#bd-3-extending-abstractauthenticationtoken" id="bd-3-extending-abstractauthenticationtoken"></a>
 
-**To successfully implement authentication for our application, we need to convert the incoming API Key to an **_**Authentication**_** object such as an **_**AbstractAuthenticationToken**._ The _AbstractAuthenticationToken_ class implements the _Authentication_ interface, representing the secret/principal for an authenticated request. Let’s create the _ApiKeyAuthentication_ class:
+**To successfully implement authentication for our application, we need to convert the incoming API Key to an&#x20;**_**Authentication**_**&#x20;object such as an&#x20;**_**AbstractAuthenticationToken**._ The _AbstractAuthenticationToken_ class implements the _Authentication_ interface, representing the secret/principal for an authenticated request. Let’s create the _ApiKeyAuthentication_ class:
 
 ```
 public class ApiKeyAuthentication extends AbstractAuthenticationToken {
@@ -116,7 +116,7 @@ The _ApiKeyAuthentication_ class is a type of _AbstractAuthenticationToken_ obje
 
 #### 3.4. Security Config <a href="#bd-4-security-config" id="bd-4-security-config"></a>
 
-We can register our custom filter programmatically by creating a _SecurityFilterChain_ bean. In this case, **we need to add the **_**AuthenticationFilter**_** before the **_**UsernamePasswordAuthenticationFilter**_** class using the **_**addFilterBefore()**_** method on an **_**HttpSecurity**_** instance**. Let’s create the _SecurityConfig_ class:
+We can register our custom filter programmatically by creating a _SecurityFilterChain_ bean. In this case, **we need to add the&#x20;**_**AuthenticationFilter**_**&#x20;before the&#x20;**_**UsernamePasswordAuthenticationFilter**_**&#x20;class using the&#x20;**_**addFilterBefore()**_**&#x20;method on an&#x20;**_**HttpSecurity**_**&#x20;instance**. Let’s create the _SecurityConfig_ class:
 
 ```
 @Configuration

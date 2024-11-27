@@ -10,7 +10,7 @@ This tutorial will show **how to set up and use properties in Spring** via Java 
 
 ### **2. Register a Properties File via Annotations** <a href="#bd-java" id="bd-java"></a>
 
-Spring 3.1 also introduces **the new **_**@PropertySource**_** annotation** as a convenient mechanism for adding property sources to the environment.
+Spring 3.1 also introduces **the new&#x20;**_**@PropertySource**_**&#x20;annotation** as a convenient mechanism for adding property sources to the environment.
 
 We can use this annotation in conjunction with the _@Configuration_ annotation:
 
@@ -43,7 +43,7 @@ public class PropertiesWithJavaConfig {
 }
 ```
 
-Of course, **we can also use the **_**@PropertySources**_** annotation and specify an array of **_**@PropertySource**_**.** This works in any supported Java version, not just in Java 8 or higher:
+Of course, **we can also use the&#x20;**_**@PropertySources**_**&#x20;annotation and specify an array of&#x20;**_**@PropertySource**_**.** This works in any supported Java version, not just in Java 8 or higher:
 
 ```
 @PropertySources({
@@ -59,7 +59,7 @@ In either case, it’s worth noting that in the event of a property name collisi
 
 ### **3. Using/Injecting Properties** <a href="#bd-usage" id="bd-usage"></a>
 
-**Injecting a property with the **_**@Value**_** annotation** is straightforward:
+**Injecting a property with the&#x20;**_**@Value**_**&#x20;annotation** is straightforward:
 
 ```
 @Value( "${jdbc.url}" )
@@ -73,9 +73,9 @@ private String jdbcUrl;
 private String jdbcUrl;
 ```
 
-The new _PropertySourcesPlaceholderConfigurer_ added in Spring 3.1 **resolve ${…} placeholders within bean definition property values and **_**@Value**_** annotations**.
+The new _PropertySourcesPlaceholderConfigurer_ added in Spring 3.1 **resolve ${…} placeholders within bean definition property values and&#x20;**_**@Value**_**&#x20;annotations**.
 
-Finally, we can **obtain the value of a property using the **_**Environment**_** API**:
+Finally, we can **obtain the value of a property using the&#x20;**_**Environment**_**&#x20;API**:
 
 ```
 @Autowired
@@ -88,9 +88,9 @@ Before we go into more advanced configuration options for properties, let’s sp
 
 Generally speaking, **this new support involves less configuration compared to standard Spring**, which is of course one of the main goals of Boot.
 
-#### **4.1. **_**application.properties:**_** the Default Property File** <a href="#bd-1-applicationproperties-the-default-property-file" id="bd-1-applicationproperties-the-default-property-file"></a>
+#### **4.1.&#x20;**_**application.properties:**_**&#x20;the Default Property File** <a href="#bd-1-applicationproperties-the-default-property-file" id="bd-1-applicationproperties-the-default-property-file"></a>
 
-Boot applies its typical convention over configuration approach to property files. This means that **we can simply put an **_**application.properties**_** file in our **_**src/main/resources**_** directory, and it will be auto-detected**. We can then inject any loaded properties from it as normal.
+Boot applies its typical convention over configuration approach to property files. This means that **we can simply put an&#x20;**_**application.properties**_**&#x20;file in our&#x20;**_**src/main/resources**_**&#x20;directory, and it will be auto-detected**. We can then inject any loaded properties from it as normal.
 
 So, by using this default file, we don’t have to explicitly register a _PropertySource_ or even provide a path to a property file.
 
@@ -124,7 +124,7 @@ Note that for properties files, the three-dashes notation is preceded by a comme
 
 If we need to target different environments, there’s a built-in mechanism for that in Boot.
 
-**We can simply define an **_**application-environment.properties**_** file in the **_**src/main/resources**_** directory, and then set a Spring profile with the same environment name.**
+**We can simply define an&#x20;**_**application-environment.properties**_**&#x20;file in the&#x20;**_**src/main/resources**_**&#x20;directory, and then set a Spring profile with the same environment name.**
 
 For example, if we define a “staging” environment, that means we’ll have to define a _staging_ profile and then _application-staging.properties_.
 
@@ -134,9 +134,9 @@ This env file will be loaded and **will take precedence over the default propert
 
 We might also have a requirement to use different property values when our application is under test.
 
-**Spring Boot handles this for us by looking in our **_**src/test/resources**_** directory during a test run**. Again, default properties will still be injectable as normal but will be overridden by these if there is a collision.
+**Spring Boot handles this for us by looking in our&#x20;**_**src/test/resources**_**&#x20;directory during a test run**. Again, default properties will still be injectable as normal but will be overridden by these if there is a collision.
 
-#### **4.4. The **_**@TestPropertySource**_** Annotation** <a href="#bd-4-the-testpropertysource-annotation" id="bd-4-the-testpropertysource-annotation"></a>
+#### **4.4. The&#x20;**_**@TestPropertySource**_**&#x20;Annotation** <a href="#bd-4-the-testpropertysource-annotation" id="bd-4-the-testpropertysource-annotation"></a>
 
 If we need more granular control over test properties, then we can use the [_@TestPropertySource_](http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/context/TestPropertySource.html) annotation.
 
@@ -174,7 +174,7 @@ public class PropertyInjectionUnitTest {
 }
 ```
 
-**We can also achieve a similar effect using the **_**properties**_** argument of the** [_**@SpringBootTest**_](http://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/context/SpringBootTest.html) **annotation:**
+**We can also achieve a similar effect using the&#x20;**_**properties**_**&#x20;argument of the** [_**@SpringBootTest**_](http://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/context/SpringBootTest.html) **annotation:**
 
 ```
 @RunWith(SpringRunner.class)
@@ -256,7 +256,7 @@ Additionally, in this version profiles can no longer be activated from profile-s
 
 Prior to version 2.4.0, Spring Boot allowed including additional configuration files using the _spring.config.location_ and _spring.config.additional-location_ properties, but they had certain limitations. For instance, they had to be defined before starting the application (as environment or system properties, or using command-line arguments) as they were used early in the process.
 
-In the mentioned version, **we can use the **_**spring.config.import**_** property within the **_**application.properties**_** or **_**application.yml**_** file to easily include additional files.** This property supports some interesting features:
+In the mentioned version, **we can use the&#x20;**_**spring.config.import**_**&#x20;property within the&#x20;**_**application.properties**_**&#x20;or&#x20;**_**application.yml**_**&#x20;file to easily include additional files.** This property supports some interesting features:
 
 * adding several files or directories
 * the files can be loaded either from the classpath or from an external directory
@@ -313,11 +313,11 @@ random.uuid=${random.uuid}
 
 Spring Boot supports a multitude of property sources, implementing a well-thought-out ordering to allow sensible overriding. It’s worth consulting the [official documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html), which goes further than the scope of this article.
 
-### **5. Configuration Using Raw Beans — the **_**PropertySourcesPlaceholderConfigurer**_ <a href="#bd-raw3_1" id="bd-raw3_1"></a>
+### **5. Configuration Using Raw Beans — the&#x20;**_**PropertySourcesPlaceholderConfigurer**_ <a href="#bd-raw3_1" id="bd-raw3_1"></a>
 
 Besides the convenient methods of getting properties into Spring, we can also define and regiter the property configuration bean manually.
 
-**Working with the **_**PropertySourcesPlaceholderConfigurer**_** gives us full control over the configuration, with the downside of being more verbose and most of the time, unnecessary.**
+**Working with the&#x20;**_**PropertySourcesPlaceholderConfigurer**_**&#x20;gives us full control over the configuration, with the downside of being more verbose and most of the time, unnecessary.**
 
 Let’s see how we can define this bean using Java configuration:
 

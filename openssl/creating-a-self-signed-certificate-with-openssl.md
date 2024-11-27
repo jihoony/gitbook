@@ -128,9 +128,9 @@ As a result, the CA-signed certificate will be in the _domain.crt_ file. This wo
 
 #### 5.3. SAN Extension <a href="#bd-3-san-extension" id="bd-3-san-extension"></a>
 
-X.509 certificates need information about the domain for which this particular certificate is issued. For example, the certificate can be valid but used in a different domain than it was issued for.  **Previously, we could do this with the **_**CommonName**_** of the certificate request**. However, after the global adoption of the SAN extension, all domain names should be included in the _subjectAltName_.
+X.509 certificates need information about the domain for which this particular certificate is issued. For example, the certificate can be valid but used in a different domain than it was issued for.  **Previously, we could do this with the&#x20;**_**CommonName**_**&#x20;of the certificate request**. However, after the global adoption of the SAN extension, all domain names should be included in the _subjectAltName_.
 
-**If we create a certificate without a correctly configured **_**subjectAltName,**_** we can still use it. However, browsers will flag it as insecure**. This approach might be fine for development. However, using this approach at an organizational level could desensitize employees to security notifications.
+**If we create a certificate without a correctly configured&#x20;**_**subjectAltName,**_**&#x20;we can still use it. However, browsers will flag it as insecure**. This approach might be fine for development. However, using this approach at an organizational level could desensitize employees to security notifications.
 
 To align with SAN extension standards, we need to create a configuration text file (_domain.ext_) with the following content:
 
