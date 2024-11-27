@@ -41,7 +41,7 @@
 * [MySQL](developer/mysql/README.md)
   * [Active Connections on MySQL](developer/mysql/active-connections-on-mysql.md)
   * [MariaDB-Galera](developer/mysql/mariadb-galera.md)
-  * [FOUND\_ROWS](developer/mysql/found\_rows.md)
+  * [FOUND\_ROWS](developer/mysql/found_rows.md)
   * [MySQL Group Replication Requirements](developer/mysql/mysql-group-replication-requirements.md)
   * [Data Types Explicit Default Handling](developer/mysql/data-types-explicit-default-handling.md)
 * [C/C++](developer/c-c++/README.md)
@@ -77,12 +77,13 @@
   * [PKCS#11 API-강좌4](developer/pkcs-11-api/pkcs-11-api-4.md)
   * [PKCS#11 API-강좌5(C 언어로 된 Sample Code)](developer/pkcs-11-api/pkcs-11-api-5-c-sample-code.md)
   * [PKCS#11 API-강좌6(EC Key 생성 및 Signing)](developer/pkcs-11-api/pkcs-11-api-6-ec-key-signing.md)
+* [Warehouse of PKI](https://jykim74.tistory.com)
 
 ## OpenSSL
 
 * [OpenSSL Document](openssl/openssl-document/README.md)
   * [openssl-req](openssl/openssl-document/openssl-req.md)
-  * [x509v3\_config](openssl/openssl-document/x509v3\_config.md)
+  * [x509v3\_config](openssl/openssl-document/x509v3_config.md)
   * [Openssl Example](openssl/openssl-document/openssl-example.md)
 * [Creating a Self-Signed Certificate With OpenSSL](openssl/creating-a-self-signed-certificate-with-openssl.md)
 
