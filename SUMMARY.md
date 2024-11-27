@@ -78,6 +78,9 @@
   * [PKCS#11 API-강좌5(C 언어로 된 Sample Code)](developer/pkcs-11-api/pkcs-11-api-5-c-sample-code.md)
   * [PKCS#11 API-강좌6(EC Key 생성 및 Signing)](developer/pkcs-11-api/pkcs-11-api-6-ec-key-signing.md)
 * [Warehouse of PKI](https://jykim74.tistory.com)
+* [GoLang](developer/golang/README.md)
+  * [go-cshared-examples](https://github.com/vladimirvivien/go-cshared-examples)
+  * [Fun building shared libraries in Go](https://medium.com/@walkert/fun-building-shared-libraries-in-go-639500a6a669)
 
 ## OpenSSL
 
