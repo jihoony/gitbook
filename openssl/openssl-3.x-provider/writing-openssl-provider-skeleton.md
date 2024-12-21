@@ -12,11 +12,11 @@
 
 <figure><img src="../../.gitbook/assets/IMG_4388 (1).png" alt=""><figcaption></figcaption></figure>
 
-#### a. What do providers provide?
+### a. What do providers provide?
 
 <figure><img src="../../.gitbook/assets/IMG_4389 (1).png" alt=""><figcaption></figcaption></figure>
 
-#### b. Core types
+### b. Core types
 
 <figure><img src="../../.gitbook/assets/IMG_4390.png" alt=""><figcaption></figcaption></figure>
 
@@ -30,7 +30,7 @@
 
 
 
-### 2. A first attempt - a minimum nonsense prvider
+## 2. A first attempt - a minimum nonsense prvider
 
 <figure><img src="../../.gitbook/assets/IMG_4392.png" alt=""><figcaption></figcaption></figure>
 
@@ -42,7 +42,7 @@
 
 
 
-### 3. The same provider, but built-in
+## 3. The same provider, but built-in
 
 <figure><img src="../../.gitbook/assets/IMG_4394.png" alt=""><figcaption></figcaption></figure>
 
@@ -54,7 +54,7 @@
 
 
 
-### 4. Handling parameter requests
+## 4. Handling parameter requests
 
 <figure><img src="../../.gitbook/assets/IMG_4398 (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -78,7 +78,7 @@
 
 
 
-### 5. Query function
+## 5. Query function
 
 <figure><img src="../../.gitbook/assets/IMG_4403.png" alt=""><figcaption></figcaption></figure>
 
@@ -98,7 +98,7 @@
 
 
 
-### 6. Getting config data
+## 6. Getting config data
 
 <figure><img src="../../.gitbook/assets/IMG_4407.png" alt=""><figcaption></figcaption></figure>
 
@@ -118,7 +118,7 @@
 
 
 
-### 7. Provider context
+## 7. Provider context
 
 <figure><img src="../../.gitbook/assets/IMG_4411.png" alt=""><figcaption></figcaption></figure>
 
@@ -128,7 +128,7 @@
 
 
 
-### 8. Error handling
+## 8. Error handling
 
 <figure><img src="../../.gitbook/assets/IMG_4413.png" alt=""><figcaption></figcaption></figure>
 
@@ -152,25 +152,25 @@
 
 
 
-### 9. Provider library context
+## 9. Provider library context
 
 <figure><img src="../../.gitbook/assets/IMG_4418.png" alt=""><figcaption></figcaption></figure>
 
 
 
-#### self-contained model
+### self-contained model
 
 <figure><img src="../../.gitbook/assets/IMG_4419.png" alt=""><figcaption></figcaption></figure>
 
 
 
-#### inheriting child model
+### inheriting child model
 
 <figure><img src="../../.gitbook/assets/IMG_4420.png" alt=""><figcaption></figcaption></figure>
 
 
 
-### Reference
+## Reference
 
 <figure><img src="../../.gitbook/assets/IMG_4421.png" alt=""><figcaption></figcaption></figure>
 
