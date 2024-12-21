@@ -89,6 +89,8 @@
   * [x509v3\_config](openssl/openssl-document/x509v3_config.md)
   * [Openssl Example](openssl/openssl-document/openssl-example.md)
 * [Creating a Self-Signed Certificate With OpenSSL](openssl/creating-a-self-signed-certificate-with-openssl.md)
+* [Openssl 3.x Provider](openssl/openssl-3.x-provider/README.md)
+  * [Writing OpenSSL Provider Skeleton](openssl/openssl-3.x-provider/writing-openssl-provider-skeleton.md)
 
 ## DevOps
 
