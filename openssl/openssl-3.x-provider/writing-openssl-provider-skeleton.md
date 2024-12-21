@@ -8,7 +8,7 @@
 
 
 
-### 1. Fundamentals
+## 1. Fundamentals
 
 <figure><img src="../../.gitbook/assets/IMG_4388 (1).png" alt=""><figcaption></figcaption></figure>
 
