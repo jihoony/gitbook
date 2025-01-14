@@ -1,6 +1,6 @@
 # Golang time
 
-## Golang Timeformat
+## Golang Time Format
 
 Instead of having a convectional format to print the date. Go uses a reference date which seems meaningless buf if you see it this way it makes sense: it's `1 2 3 4 5 6`in the Posix `date`format:
 
@@ -80,7 +80,7 @@ const (
 ```
 
 ```go
-ackage main
+package main
 
 import (
 	"fmt"
