@@ -82,6 +82,7 @@
   * [go-cshared-examples](https://github.com/vladimirvivien/go-cshared-examples)
   * [Fun building shared libraries in Go](https://medium.com/@walkert/fun-building-shared-libraries-in-go-639500a6a669)
   * [Golang time](developer/golang/golang-time.md)
+  * [Encoding Json](developer/golang/encoding-json.md)
 
 ## OpenSSL
 
