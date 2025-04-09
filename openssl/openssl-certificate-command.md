@@ -25,8 +25,8 @@ CN = caroot
 
 [extensions]
 basicConstraints = critical, @basic_constraints
-keyUsage = keyEncipherment, digitalSignature, nonRepudiation
-extendedKeyUsage = serverAuth
+keyUsage = keyEncipherment, digitalSignature, nonRepudiation, keyCertSign
+
 subjectKeyIdentifier = hash
 subjectAltName = @alt_names
 
