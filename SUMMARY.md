@@ -93,6 +93,7 @@
 * [Creating a Self-Signed Certificate With OpenSSL](openssl/creating-a-self-signed-certificate-with-openssl.md)
 * [Openssl 3.x Provider](openssl/openssl-3.x-provider/README.md)
   * [Writing OpenSSL Provider Skeleton](openssl/openssl-3.x-provider/writing-openssl-provider-skeleton.md)
+* [OpenSSL Certificate Command](openssl/openssl-certificate-command.md)
 
 ## DevOps
 
