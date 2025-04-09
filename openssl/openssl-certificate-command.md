@@ -99,7 +99,7 @@ CA = false
 
 ### Generate CA Private Key and Certificate
 
-{% code overflow="wrap" lineNumbers="true" fullWidth="true" %}
+{% code overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```bash
 openssl req -x509 -nodes -days 1000 -newkey rsa:2048 -sha256 -keyout ca.key -out ca.crt -config ca.conf -extensions extensions
 ```
@@ -111,7 +111,7 @@ openssl req -x509 -nodes -days 1000 -newkey rsa:2048 -sha256 -keyout ca.key -out
 
 ### Generate Server & Client CSR
 
-{% code overflow="wrap" lineNumbers="true" fullWidth="true" %}
+{% code overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```bash
 # generate private key and csr
 openssl req -newkey rsa:2048 -nodes -sha256 -keyout server.key -out server.csr -config server.conf -extensions extensions
@@ -130,7 +130,7 @@ openssl req -out client.csr -key client.key -new -config client.conf -extensions
 
 #### Verify Generated CSR & Private Key
 
-{% code overflow="wrap" lineNumbers="true" fullWidth="true" %}
+{% code overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```bash
 openssl rsa -check -in server.key
 openssl req -text -noout -verify -in server.csr
@@ -144,7 +144,7 @@ openssl req -text -noout -verify -in client.csr
 
 ### Generate Certificate
 
-{% code overflow="wrap" lineNumbers="true" fullWidth="true" %}
+{% code overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```bash
 openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -out server.crt -days 365 -extfile server.conf -extensions extensions
 openssl x509 -req -in client.csr -CA ca.crt -CAkey ca.key -out client.crt -days 365 -extfile client.conf -extensions extensions
@@ -155,7 +155,7 @@ openssl x509 -req -in client.csr -CA ca.crt -CAkey ca.key -out client.crt -days 
 
 #### Verify Generated Certificate
 
-{% code overflow="wrap" lineNumbers="true" fullWidth="true" %}
+{% code overflow="wrap" lineNumbers="true" fullWidth="false" %}
 ```bash
 openssl x509 -noout -text -in server.crt
 openssl x509 -noout -text -in client.crt
