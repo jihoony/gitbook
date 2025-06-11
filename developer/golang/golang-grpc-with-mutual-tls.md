@@ -1,7 +1,5 @@
 # Golang gRPC with mutual TLS
 
-
-
 ## 개요
 
 본 문서는 Golang언어로 gRPC 통신에 사용하기 위한 mTLS를 구축하는 예시 코드를 기술한다. mTLS는 mutual TLS의 약어로, 서버-클라이언트 간의 양방향 인증을 수행하는 방식을 말한다.
@@ -198,8 +196,4 @@ clientCertKeyPair, err := tls.X509KeyPair(certPEMBlock, buf.Bytes())
  
 // use clientCertKeyPair
 ```
-
-
-
-
 
